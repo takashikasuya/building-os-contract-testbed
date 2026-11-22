@@ -1,0 +1,78 @@
+# building-os-contract-testbed
+
+Offline contract checks for building-automation integration experiments
+(BOPTEST / hvac-sim → Nexus Gateway → Building OS RI → BDE). The repository holds:
+
+- **contract predicates** that judge one recorded interaction trace against the contract model
+  C(o) = ⟨Pre, Post, Fail, T⟩, layered V0 (structure) → V1 (identity, permission, schema) → V2 (time, readback,
+  release, audit) → V3 (unit, missing-not-filled, unverifiable-refused, release-failure-reported);
+- **synthetic fixtures** shaped after the reported injections, so the predicates can be exercised without any live
+  system;
+- **result records** of the B11, B12, B13 and PX4 experiments, imported from the original reports with their
+  Pass / Fail / Skip / Not Tested status, and traceable to the report text.
+
+It does **not** contain, require or control BOPTEST, Nexus Gateway, Building OS RI, BDE or any real equipment.
+
+> Status: release candidate, **not yet approved for publication**. See [docs/publication-audit.md](docs/publication-audit.md).
+
+## Quick start (offline, no network services)
+
+```bash
+python -m venv .venv
+. .venv/bin/activate
+python -m pip install -e ".[test]"
+python -m pytest -q tests/offline tests/contract
+python -m bos_contract_testbed.suite          # structure and counts of the contract suite
+python tools/release_gate.py --allow-blocked  # publication checks (BLOCKED until approvals are recorded)
+```
+
+Python 3.10 or newer. The only runtime dependency is PyYAML.
+
+## What is and is not reproducible here
+
+| Reproducible from this repository | Not reproducible here |
+|---|---|
+| Predicate logic of S/C and V0–V3, and the B13 S4 judge, on synthetic traces | The recorded traces and run artifacts (private) |
+| Contract suite structure and its status counts (35 conditions) | Any live run (B12 control injections, B13 S4, PX4 live) |
+| Traceability of every published number to its report | Re-computation of the measured numbers |
+
+See [docs/reproducibility.md](docs/reproducibility.md) and [results/summary.md](results/summary.md).
+
+## Layout
+
+| Path | Content |
+|---|---|
+| `src/bos_contract_testbed/` | predicates (`checks`, `layers`, `v3`, `lifecycle`) and the suite checker (`suite`) |
+| `src/bos_contract_testbed/data/bos-contract-suite.yaml` | contract suite definition v0 |
+| `fixtures/synthetic/` | hand-written traces (not recorded data) |
+| `tests/contract/` | unit tests of the predicates |
+| `tests/offline/` | fixture-vs-report, suite and traceability tests |
+| `results/` | experiment records, a summary, and the imported source reports |
+| `tools/release_gate.py` | publication gate; `tools/export_reports.py` is maintainer-only |
+| `docs/` | architecture, contract model, reproducibility, limitations, audit, licensing |
+
+## Documentation
+
+[Architecture](docs/architecture.md) · [Contract model](docs/contract-model.md) ·
+[Reproducibility](docs/reproducibility.md) · [Limitations](docs/limitations.md) ·
+[Publication audit](docs/publication-audit.md) · [License candidates](docs/license-candidates.md) ·
+[Security](SECURITY.md) · [Notice](NOTICE.md)
+
+## License
+
+**Not yet decided.** No license is granted until the rights holder selects one ([candidates](docs/license-candidates.md)).
+
+---
+
+## 概要（日本語）
+
+ビル設備の統合実験（BOPTEST／hvac-sim → Nexus Gateway → Building OS RI → BDE）の契約を、記録された 1 本の
+やり取り（trace）について判定する述語と、合成 fixture、実験結果の記録を公開するためのリポジトリです。
+製品コード、実設備への制御、実認証情報は含みません。
+
+- 再現できるのは、述語の論理（合成 trace による）、契約試験一式の構造と件数、結果の数値が元の報告書の本文に
+  あることの照合です。
+- 実測の数値の再計算や live の実験（B12 の制御注入、B13 シナリオ 4、PX4 の live）は、この repo だけでは再現できません。
+- 結果は Pass / Fail / Skip / Not Tested を区別し、元の報告書（`results/source-reports/`、日本語、匿名化のみで
+  数値は不変）から引用しています。
+- 公開には人の承認（ライセンス、権利者、組織の許可、共著者の同意、Push）が必要です。それまでは `BLOCKED` です。
