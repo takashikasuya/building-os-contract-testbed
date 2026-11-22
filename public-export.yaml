@@ -1,0 +1,106 @@
+# Public export allowlist for building-os-contract-testbed.
+#
+# Only the files listed here may be published. `.gitignore` is NOT relied on.
+# tools/release_gate.py fails when a tracked file is neither listed under `imported` nor under `authored`.
+#
+# source.repo is the private repository the material was taken from. It is recorded for provenance only;
+# nothing in this repository needs access to it (tests, CI and the gate run on this tree alone).
+schema_version: 1
+source:
+  repo: building-os-e2e            # private; not required to use this repository
+  ref: bootstrap/initial-testbed   # default branch
+  commit: e7e020dfa9ecf1df5afbcb555b84f3f055473943
+  commit_date: "2026-11-22T12:20:26+09:00"
+  excluded_unmerged: "draft PR #74 (PX4 stage 2 A live) and branches not merged into the commit above"
+
+# Redaction applied by tools/export_reports.py to every `transform: redact` file. The concrete patterns are kept by the
+# maintainer outside this tree (they are the identifiers being removed); only their categories are recorded here.
+# Numbers are never touched: the export asserts that the multiset of digit sequences is identical before and after.
+redaction_categories:
+  - {category: approver-handle, replacement: "human:<approver>", reason: "personal identifier of the approving person"}
+  - {category: private-github-owner, replacement: "private/", reason: "owner of private repositories"}
+# Identifiers that must not appear anywhere in the published tree, as sha256 of the lower-case token (checked by the
+# gate over every substring of that length inside each alphanumeric run).
+forbidden_token_sha256:
+  - {length: 6, sha256: 761433e960b63f4da95c61841bcefbcc478e0db5068921e25a55dfe5299e45b0}
+  - {length: 7, sha256: e43f4e9ee1db5b76003e95325cc15c31e365ffb095d269fd2aa45d744b8f31c2}
+
+# Classification: PUBLIC = publish once the release gate passes; REVIEW = staged here but needs a recorded human
+# decision in release/approvals.yaml before publication (see docs/publication-audit.md).
+imported:
+  # --- experiment reports (original Japanese, redacted; numbers unchanged) ---
+  - {src: docs/verification/2026-11-08-b3-injection.md, dst: results/source-reports/verification/2026-11-08-b3-injection.md, transform: redact, class: REVIEW}
+  - {src: docs/verification/2026-11-21-b11-contract-layers.md, dst: results/source-reports/verification/2026-11-21-b11-contract-layers.md, transform: redact, class: REVIEW}
+  - {src: docs/verification/2026-11-21-b12-v3-validation.md, dst: results/source-reports/verification/2026-11-21-b12-v3-validation.md, transform: redact, class: REVIEW}
+  - {src: docs/verification/2026-11-21-b13-lifecycle-offline.md, dst: results/source-reports/verification/2026-11-21-b13-lifecycle-offline.md, transform: redact, class: REVIEW}
+  - {src: docs/verification/2026-11-21-b13-s4.md, dst: results/source-reports/verification/2026-11-21-b13-s4.md, transform: redact, class: REVIEW}
+  - {src: docs/verification/2026-11-08-px4-stage1-analysis.md, dst: results/source-reports/verification/2026-11-08-px4-stage1-analysis.md, transform: redact, class: REVIEW}
+  - {src: docs/verification/2026-11-12-px4-stage2-offline.md, dst: results/source-reports/verification/2026-11-12-px4-stage2-offline.md, transform: redact, class: REVIEW}
+  - {src: docs/verification/2026-11-21-px4-stage2-live-b.md, dst: results/source-reports/verification/2026-11-21-px4-stage2-live-b.md, transform: redact, class: REVIEW}
+  # --- preregistrations the reports depend on ---
+  - {src: docs/preregistration/b2-contract-injection.md, dst: results/source-reports/preregistration/b2-contract-injection.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/b11-contract-layers.md, dst: results/source-reports/preregistration/b11-contract-layers.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/b12-v3-validation.md, dst: results/source-reports/preregistration/b12-v3-validation.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/b12-v3-validation-addendum-r-retry.md, dst: results/source-reports/preregistration/b12-v3-validation-addendum-r-retry.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/b13-lifecycle-s4.md, dst: results/source-reports/preregistration/b13-lifecycle-s4.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/px4-stage1.md, dst: results/source-reports/preregistration/px4-stage1.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/px4-stage1-addendum-replay.md, dst: results/source-reports/preregistration/px4-stage1-addendum-replay.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/px4-stage1b.md, dst: results/source-reports/preregistration/px4-stage1b.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/px4-stage2.md, dst: results/source-reports/preregistration/px4-stage2.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/px4-stage2-addendum-b-retrain.md, dst: results/source-reports/preregistration/px4-stage2-addendum-b-retrain.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/px4-stage2-addendum-live-b-window.md, dst: results/source-reports/preregistration/px4-stage2-addendum-live-b-window.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/px4-stage2-addendum-pin-points.md, dst: results/source-reports/preregistration/px4-stage2-addendum-pin-points.md, transform: redact, class: REVIEW}
+  - {src: docs/preregistration/px4-stage2-addendum-ri-runtime.md, dst: results/source-reports/preregistration/px4-stage2-addendum-ri-runtime.md, transform: redact, class: REVIEW}
+  # --- contract suite definition (derived from an unpublished paper's Table 5) ---
+  - {src: docs/contract-suite/README.md, dst: results/source-reports/contract-suite/README.md, transform: redact, class: REVIEW}
+  - {src: docs/contract-suite/bos-contract-suite.yaml, dst: src/bos_contract_testbed/data/bos-contract-suite.yaml, transform: redact, class: REVIEW}
+  # --- code ported by hand (logic unchanged; imports and artifact I/O removed) ---
+  - {src: scripts/b3_lab/checks.py, dst: src/bos_contract_testbed/checks.py, transform: port, class: PUBLIC,
+     note: "byte-identical copy"}
+  - {src: scripts/b11_lab/layers.py, dst: src/bos_contract_testbed/layers.py, transform: port, class: PUBLIC,
+     note: "layer assignment and judge_layers only; artifact loading and normal-input counting (needs private run records) dropped"}
+  - {src: scripts/b12_lab/v3.py, dst: src/bos_contract_testbed/v3.py, transform: port, class: PUBLIC, note: "imports changed to the package"}
+  - {src: scripts/b13_lab/s4.py, dst: src/bos_contract_testbed/lifecycle.py, transform: port, class: PUBLIC,
+     note: "judge / scenario / read_priority only; CLI and parquet telemetry reading dropped"}
+  - {src: scripts/contract_suite.py, dst: src/bos_contract_testbed/suite.py, transform: port, class: PUBLIC,
+     note: "structural checks and summary only; evidence lookup into private artifacts dropped (reported as Not Tested)"}
+  - {src: tests/test_b3_checks.py, dst: tests/contract/test_checks.py, transform: port, class: PUBLIC,
+     note: "synthetic traces; imports changed; suite-sha test reads the export provenance; the normal.py test dropped (private records)"}
+  - {src: tests/test_b11_layers.py, dst: tests/contract/test_layers.py, transform: port, class: PUBLIC, note: "imports changed"}
+  - {src: tests/test_b12_v3.py, dst: tests/contract/test_v3.py, transform: port, class: PUBLIC,
+     note: "imports changed; the git-history ordering test (prereg before predicates) dropped: history is not exported"}
+  - {src: tests/test_b13_s4.py, dst: tests/contract/test_lifecycle.py, transform: port, class: PUBLIC, note: "imports changed"}
+
+# Written for the public repository (no private source text copied).
+authored:
+  - .github/workflows/offline-ci.yml
+  - .gitignore
+  - CHANGELOG.md
+  - CITATION.cff
+  - NOTICE.md
+  - README.md
+  - SECURITY.md
+  - docs/architecture.md
+  - docs/contract-model.md
+  - docs/github-setup.md
+  - docs/license-candidates.md
+  - docs/limitations.md
+  - docs/publication-audit.md
+  - docs/reproducibility.md
+  - fixtures/README.md
+  - fixtures/synthetic/*.json
+  - manifest.public.yaml
+  - public-export.yaml
+  - pyproject.toml
+  - release/approvals.yaml
+  - release/export-provenance.json   # generated by tools/export_reports.py
+  - results/experiments.yaml
+  - results/summary.md
+  - results/source-reports/README.md
+  - src/bos_contract_testbed/__init__.py
+  - tests/__init__.py
+  - tests/contract/__init__.py
+  - tests/offline/__init__.py
+  - tests/offline/test_*.py
+  - tools/export_reports.py
+  - tools/release_gate.py

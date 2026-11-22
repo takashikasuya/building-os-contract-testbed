@@ -1,0 +1,19 @@
+# Build and environment outputs. Publication is decided by public-export.yaml, not by this file.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+gate-report.json
+
+# Never commit secrets or local configuration.
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx

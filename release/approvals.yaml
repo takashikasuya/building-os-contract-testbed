@@ -1,0 +1,47 @@
+# Human approvals required before this repository may be pushed or made public.
+# Only a human fills these in. An AI agent must not set `approved: true`.
+# tools/release_gate.py reports BLOCKED while any entry is not approved.
+schema_version: 1
+
+license:
+  approved: false
+  spdx: null            # e.g. Apache-2.0 for code; see docs/license-candidates.md. Add the LICENSE file as well.
+  docs_results_license: null
+  by: null
+  date: null
+
+copyright_holder:
+  approved: false
+  holder: null          # not inferred; the person or organisation that holds the rights (employment / contract terms)
+  by: null
+  date: null
+
+organization_publication_permission:
+  approved: false       # permission of every organisation with a claim on the work or the results (employer, GUTP, funders)
+  organizations: []
+  by: null
+  date: null
+
+results_disclosure:
+  approved: false       # the results support an unpublished paper; co-authors agree to disclose them before publication
+  scope: "results/experiments.yaml, results/summary.md, results/source-reports/**, src/bos_contract_testbed/data/bos-contract-suite.yaml"
+  by: null
+  date: null
+
+third_party_material:
+  approved: false       # review of material derived from third-party projects (see NOTICE.md and docs/publication-audit.md §4)
+  by: null
+  date: null
+
+commit_identity:
+  approved: false       # the author name / e-mail recorded in the commits of this repository will become public
+  identity: null
+  by: null
+  date: null
+
+push_and_visibility:
+  approved: false       # creating the GitHub repository, pushing, and any visibility change
+  repository: null
+  visibility: private
+  by: null
+  date: null
