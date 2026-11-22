@@ -15,6 +15,7 @@ and none of the source history is included.
 - Result records for B1, B3, B11, B12, B13, PX4 (`results/experiments.yaml`, `results/summary.md`) and the
   imported reports (redacted, numbers unchanged).
 - Release gate (`tools/release_gate.py`) and offline CI.
+- Licensing: Apache-2.0 for code (`LICENSE`), CC-BY-4.0 for docs, results, fixtures and data (`LICENSES/CC-BY-4.0.txt`).
 
 ### Reproduction
 

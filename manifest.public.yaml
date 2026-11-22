@@ -19,25 +19,27 @@ runtime_dependencies: {PyYAML: ">=6.0", pytest: ">=8 (tests only)"}
 files:
   .github/workflows/offline-ci.yml: f9fa781ff3187cdd6619e2e33d369b7972fba5cd5c9ab0bc3b677bf4219b6421
   .gitignore: 4ad789029b2fabcbfe7ac569063355c750ca872f3ebdbed7d296a87226c8c485
-  CHANGELOG.md: b7bfd73ef7f4a03c05623d83662f27190ec9fafe3ec36f1c3fe45ec0d7e2879e
-  CITATION.cff: c90d9dd7f71d84698b30e8677beaa5330ec49eef9f96df4cabe188814bab185a
-  NOTICE.md: 4544aba701548c22c5545e59018f6c4ca4b64f1d3dabab64c7d2bf85413eaa2e
-  README.md: 3de32bb8ffe6859ecc0bf219de00236610c95999ecad2d5aa3e0ea62635a812f
+  CHANGELOG.md: ab786cb55d47fa4e44696bbd01ca5516273652da41933c8faef220b922eac0c2
+  CITATION.cff: 4d194d14a071e1bfe18cf91b0830f7c6572a330ca6557d226442b288d59fc03f
+  LICENSE: cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+  LICENSES/CC-BY-4.0.txt: 9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411
+  NOTICE.md: 1838afaa7f7a1a8ddf87015380f122df018a7d91f55ce89d1e524c353f3cbc0c
+  README.md: 1d1d8133e88b1199a2abd3dfee97ca0b00137f1c746606a61edac298d246d831
   SECURITY.md: 015ab9834eb8bdd16ea1b3e264d4a7ceed0eb3a304bb3629996e4ecfc0104634
   docs/architecture.md: 51e44be3975f163f6a344c466b0ec561fc8f42f015534ef0f29afb2dac2bb0f5
   docs/contract-model.md: bd6d0004c3f3d08c0ca414ba438a8a3ad5556f82d7706069c3f6e15a3dc8df31
   docs/github-setup.md: 3e9bb784379fe5ca547caf10cd5ef30be1b8f61f2fed389897fd8001b4a7a4e3
-  docs/license-candidates.md: df0a38d7be75633d8e2af5be37a87ad841df0fd27f59f71d4debcdeac8d79a01
+  docs/license-candidates.md: 7cf94af0aae94b80273519ed51cc96f6e87f2bba2c8fbad033dbe2b3742540c7
   docs/limitations.md: dedbb57dce4d00ddbd796a1530f80b7bc5025c61fd6248f07789c70e5acbbe5f
-  docs/publication-audit.md: cc5554316b4063b54ce71b8b994d515335a8b56ccf63bdba0a5bafc8d9d45f17
+  docs/publication-audit.md: cdb1b70444db979010dbe64d12671b518f4b1cf253c12247ac62fa3e1820d914
   docs/reproducibility.md: 992d66f01890f51df276c5dbae8ddfae43df6be5805274472b0d62e60b68d404
   fixtures/README.md: 504854751ea5311b4317b8672f4fb7c1f9e1be2a7af637709e89d3ce08f3aca7
   fixtures/synthetic/b11-injections.json: 83191bd7980747f88ca69b8283e21066fdf071d263cb32a10534fe53396b046b
   fixtures/synthetic/b12-injections.json: c98ea87e6e28bdab9bfffcd533706ebdd0b9a8f6cdfcf7162e5648d06735d796
   fixtures/synthetic/b13-s4.json: 38e0569519b126993a60b28b4438cdf07cc0366f53b421aed42e3dbb5439683d
-  public-export.yaml: 3e23e19e1dc9c6e67a196bcc0176b9db9247c7bb8e3d17d2e6f08d002c4a629b
-  pyproject.toml: 9a42b6e22f2fd5bce13c8d9a53e83278fbcb49694894c4cf58243c3bbf312eb1
-  release/approvals.yaml: 5587b8f7bacd46a09b73bff4da42863f18bc5a51e554fb4b3fe1fc4654a35f42
+  public-export.yaml: 235e75e521e6ad68f3f1aed77f5edeff4d66677771ee440d586cd2a2b415f930
+  pyproject.toml: 17a42fe4c1b9903b1164aac379b19661640193e600b036d83d2ca88147442f7d
+  release/approvals.yaml: 9f65b5ee68915144b27f2d786a5a428b66ea98a07a4e064c398b8fc7dabebe57
   release/export-provenance.json: fbbc1aca81e7addbaf8366a7929ff632a989964b532aca52c153beea3cdfff61
   results/experiments.yaml: 5b82ca72cf91395770ea83e9c3bc3429bb5575c96b0db1ab5089b1e9d19a789b
   results/source-reports/README.md: 66dc34e753b75b70f91d9941dc3d1e4619cd547958226708713201509e270fea

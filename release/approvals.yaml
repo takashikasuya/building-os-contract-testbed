@@ -5,8 +5,8 @@ schema_version: 1
 
 license:
   approved: false
-  spdx: null            # e.g. Apache-2.0 for code; see docs/license-candidates.md. Add the LICENSE file as well.
-  docs_results_license: null
+  spdx: Apache-2.0      # chosen by the user on 2026-11-23 (recorded by the AI agent; `approved` left for the human)
+  docs_results_license: CC-BY-4.0
   by: null
   date: null
 

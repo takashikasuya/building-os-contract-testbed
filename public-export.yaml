@@ -77,6 +77,8 @@ authored:
   - .gitignore
   - CHANGELOG.md
   - CITATION.cff
+  - LICENSE
+  - LICENSES/CC-BY-4.0.txt
   - NOTICE.md
   - README.md
   - SECURITY.md

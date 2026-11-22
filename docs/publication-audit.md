@@ -69,4 +69,4 @@ See [results/summary.md](../results/summary.md) and [results/experiments.yaml](.
 
 ## 6. Decision
 
-**Publication on hold (BLOCKED).** Technical checks can pass, but these items are unresolved: license, rights holder, organisation permission, co-author consent to disclose the results, third-party review, commit identity, and push/visibility approval.
+**Publication on hold (BLOCKED).** Technical checks can pass, but these items are unresolved: approval of the selected license (Apache-2.0 code, CC-BY-4.0 docs/results; texts added 2026-11-23), rights holder, organisation permission, co-author consent to disclose the results, third-party review, commit identity, and push/visibility approval.

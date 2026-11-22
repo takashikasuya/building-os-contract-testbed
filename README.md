@@ -55,12 +55,17 @@ See [docs/reproducibility.md](docs/reproducibility.md) and [results/summary.md](
 
 [Architecture](docs/architecture.md) · [Contract model](docs/contract-model.md) ·
 [Reproducibility](docs/reproducibility.md) · [Limitations](docs/limitations.md) ·
-[Publication audit](docs/publication-audit.md) · [License candidates](docs/license-candidates.md) ·
+[Publication audit](docs/publication-audit.md) · [Licensing](docs/license-candidates.md) ·
 [Security](SECURITY.md) · [Notice](NOTICE.md)
 
 ## License
 
-**Not yet decided.** No license is granted until the rights holder selects one ([candidates](docs/license-candidates.md)).
+| Material | License |
+|---|---|
+| Code: `src/bos_contract_testbed/*.py`, `tests/`, `tools/`, `.github/`, `pyproject.toml` | [Apache-2.0](LICENSE) |
+| Docs, results, fixtures and data: `README.md`, `NOTICE.md`, `SECURITY.md`, `CHANGELOG.md`, `docs/`, `results/` (including the imported reports), `fixtures/`, `src/bos_contract_testbed/data/bos-contract-suite.yaml` | [CC-BY-4.0](LICENSES/CC-BY-4.0.txt) |
+
+Third-party names and cited test identifiers are not covered by these licenses (see [NOTICE.md](NOTICE.md)).
 
 ---
 
@@ -75,4 +80,5 @@ See [docs/reproducibility.md](docs/reproducibility.md) and [results/summary.md](
 - 実測の数値の再計算や live の実験（B12 の制御注入、B13 シナリオ 4、PX4 の live）は、この repo だけでは再現できません。
 - 結果は Pass / Fail / Skip / Not Tested を区別し、元の報告書（`results/source-reports/`、日本語、匿名化のみで
   数値は不変）から引用しています。
-- 公開には人の承認（ライセンス、権利者、組織の許可、共著者の同意、Push）が必要です。それまでは `BLOCKED` です。
+- ライセンス：コードは Apache-2.0、文書・結果・fixture・契約試験一式の YAML は CC-BY-4.0 です。
+- 公開には人の承認（権利者、組織の許可、共著者の同意、公開範囲の変更など）が必要です。それまでは `BLOCKED` です。

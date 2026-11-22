@@ -1,11 +1,11 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below. (Authors and license to be confirmed before publication.)"
+message: "If you use this software, please cite it as below. (Authors to be confirmed before publication.)"
 title: "building-os-contract-testbed: offline contract checks for Building OS integration experiments"
 type: software
 version: 0.1.0.dev0
 authors:
   - name: "TO BE CONFIRMED"
-# license: to be added after the rights review (docs/license-candidates.md)
+license: Apache-2.0
 # repository-code: to be added when the public repository exists
 keywords:
   - building automation

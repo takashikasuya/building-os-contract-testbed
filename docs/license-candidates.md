@@ -1,8 +1,9 @@
 # License candidates and rights record
 
-**No license has been chosen.** Choosing one is the rights holder's decision. Record it in
-[release/approvals.yaml](../release/approvals.yaml) and add a `LICENSE` file. Until then, the release gate reports
-BLOCKED.
+**Selected 2026-11-23: option A, Apache-2.0 for code and CC-BY-4.0 for docs, results, fixtures and data** (see the
+README for the file-level split). `LICENSE` and `LICENSES/CC-BY-4.0.txt` hold the texts. The rights holder still has to
+be confirmed and the choice approved in [release/approvals.yaml](../release/approvals.yaml); until then the release
+gate reports BLOCKED.
 
 ## Facts established
 
@@ -23,7 +24,7 @@ BLOCKED.
 | B | MIT | CC-BY-4.0 | shortest; no patent clause |
 | C | BSD-3-Clause | CC-BY-4.0 | close to BOPTEST's family of licenses (BOPTEST license not verified here) |
 
-### Recommendation (proposal only, not a decision)
+### Recommendation (adopted 2026-11-23)
 
 **Option A: Apache-2.0 for code, CC-BY-4.0 for docs, results and fixtures.** Reasons:
 
@@ -47,4 +48,4 @@ remain names, not licensed content. Each owning project should still confirm tha
 - [ ] Organisations with a claim agree to publication (employer, GUTP consortium if applicable, funders)
 - [ ] Co-authors of the unpublished paper agree to disclose the contract suite and results before publication
 - [ ] Owners of Building OS RI and tenant-portal have no objection to the cited test identifiers
-- [ ] License for code and for docs/results selected; LICENSE file added; `pyproject.toml` and `CITATION.cff` updated
+- [x] License for code and for docs/results selected; LICENSE file added; `pyproject.toml` and `CITATION.cff` updated
