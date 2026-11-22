@@ -1,0 +1,174 @@
+# Machine-readable record of the published experiments.
+#
+# Source of truth: the original reports, imported verbatim (redacted, numbers unchanged) under results/source-reports/.
+# Nothing here was re-run for this release. Every `quote` must occur verbatim in its `source` report; this is checked by
+# tests/offline/test_results_traceability.py and tools/release_gate.py.
+#
+# status: Pass | Fail | Skip | Not Tested | Not Applicable (with reason). Skip / Not Tested are never counted as Pass.
+# reproducibility:
+#   offline-public      re-runnable from this repository alone
+#   offline-private     offline re-analysis, but over recorded artifacts that are not published
+#   live                needs live stacks (BOPTEST / hvac-sim, Nexus, RI, BDE) and a human approval; not reproducible here
+schema_version: 1
+source_commit: e7e020dfa9ecf1df5afbcb555b84f3f055473943
+reports_root: results/source-reports
+
+experiments:
+  - id: B1-contract-suite
+    title: Contract suite for the five operations of the contract model (35 conditions)
+    contract_layer: "C(o) = <Pre, Post, Fail, T>; L0 definition"
+    fixture_origin: "src/bos_contract_testbed/data/bos-contract-suite.yaml (redacted copy of the original definition)"
+    dependencies: {RI: 8c871466fff695761fcbedf52f1dcdb830f455db, tenant-portal: 45c82971c7dd157f286e065f5662a4ea0ed9e697}
+    method: "every condition maps to tests and/or a gap; structural check re-runnable here; test-id evidence lives in private run records"
+    reproducibility: offline-public
+    reproducible_part: "definition structure and status counts (tests/offline/test_contract_suite.py)"
+    results:
+      - {item: "definition: 35 conditions, covered 21 / partial 7 / gap 5 / conflict 2", status: Pass,
+         source: contract-suite/README.md, quote: "| **計** | **21** | **7** | **5** | **2** |"}
+      - {item: "test-id evidence against recorded run results (original check: 56 of 66 refs)", status: Not Tested,
+         reason: "evidence records are private; the public package reports every ref as Not Tested",
+         source: contract-suite/README.md, quote: "参照 66 件のうち 56 件を照合した"}
+      - {item: "RI owner unit tests (ri-unit) executed by the testbed", status: Not Tested,
+         source: contract-suite/README.md, quote: "**Testbed では実行していない**（Not Tested）"}
+    limitations: ["derived from an unpublished paper's Table 5 (REVIEW: disclosure approval needed)"]
+
+  - id: B3-injection
+    title: S vs C detection over 13 author-designed injections (baseline for B11)
+    contract_layer: "S (structure-only) and C (suite v0 predicates); telemetry L0 component + control L1 path"
+    fixture_origin: "recorded traces (private); synthetic look-alikes in fixtures/synthetic/b11-injections.json"
+    dependencies: {RI: 8c87146, BDE: 5f36355, hvac-sim: 2eb52e4}
+    method: "inject T1-T12, judge each trace with checks.py (S and C)"
+    reproducibility: live
+    results:
+      - {item: "detected by S / by C (13 judged)", status: Not Applicable, reason: "measurement, no acceptance threshold",
+         source: verification/2026-11-08-b3-injection.md, quote: "| 検出（判定できた 13 件） | 6（T2a、T6、T7、T9、T11、T12） | 10（T2a、T2b、T4、T5、T6、T7、T9、T10、T11、T12） |"}
+    limitations: ["injection set designed by the author", "telemetry injections ran RI components in one process, not via Nexus"]
+
+  - id: B11-contract-layers
+    title: Ablation of contract layers V0-V2 over the B3 traces
+    contract_layer: "V0 structure / V1 id space, permission, schema / V2 time, readback, release, audit"
+    fixture_origin: "recorded B3 traces (private); synthetic look-alikes in fixtures/synthetic/b11-injections.json"
+    dependencies: {Testbed: 675203b, RI: 8c87146, Builder: f2f313e}
+    method: "offline re-judgment of recorded traces by preregistered layer assignment (no injection re-run)"
+    reproducibility: offline-private
+    reproducible_part: "layer logic on synthetic traces (tests/offline/test_synthetic_fixtures.py); not the recorded counts"
+    results:
+      - {item: "analysis ran as preregistered", status: Pass,
+         source: verification/2026-11-21-b11-contract-layers.md, quote: "| 解析が事前登録どおりに走った（層の無い条件 id は 0） | Pass |"}
+      - {item: "per-layer detection equals the preregistered expectation (V0 6, V1 7, V2 10)", status: Pass,
+         source: verification/2026-11-21-b11-contract-layers.md, quote: "| 層ごとの検出が、事前登録の予想と一致 | 一致（V0 6、V1 7、V2 10） |"}
+      - {item: "false positives on normal input by the preregistered rule (161 caused by a unit error in the rule)", status: Not Applicable,
+         reason: "measurement; the rule itself was wrong, see report",
+         source: verification/2026-11-21-b11-contract-layers.md, quote: "V0 0、V1 161、V2 161（／163,394）。161 は規則の誤り（下記）"}
+      - {item: "exploratory recount with RI's accepted value", status: Not Applicable, reason: "exploratory, written after results",
+         source: verification/2026-11-21-b11-contract-layers.md, quote: "結果は、範囲外 0 / 833（A 0 / 161、B 0 / 672）、監査の行が無い書込は 0。"}
+      - {item: "Builder SHACL on the T8 twin (exploratory)", status: Not Tested,
+         source: verification/2026-11-21-b11-contract-layers.md, quote: "| Builder の SHACL で T8 の twin（探索的） | Not Tested（静的な観察だけ） |"}
+    limitations: ["explanatory decomposition of known B3 results, not new confirmatory evidence", "layer boundaries fixed by condition id"]
+
+  - id: B12-v3-validation
+    title: Validation of the V3 conditions (unit, missing-not-filled, unverifiable-refused, release-failure-reported)
+    contract_layer: "V3 (conditions that were gap/conflict in suite v0)"
+    fixture_origin: "recorded traces (private); synthetic look-alikes in fixtures/synthetic/b12-injections.json"
+    dependencies: {RI: 8c87146, RI_runtime_image: "f3b93cdf… (truncated in report)", BDE_Safety: 5f36355}
+    method: "preregistered injections U1-U3, M1-M3 (RI components), S1-S3, R1-R2 (live control path); V0-V3 judged offline"
+    reproducibility: live
+    reproducible_part: "V3 logic on synthetic traces; M1-M3 mechanisms are assumed in the fixtures"
+    results:
+      - {item: "Tested 11; V3 detects 10 (all but R2); V0 0, V1 2, V2 3", status: Not Applicable, reason: "measurement",
+         source: verification/2026-11-21-b12-v3-validation.md, quote: "- Tested 11 件。V3 は 10 件を検出し、R2 だけ検出しなかった。V0 は 0 件、V1 は 2 件（M1、M2）、V2 は 3 件（M1、M2、R1）。"}
+      - {item: "V3 false positives on normal input", status: Not Applicable, reason: "measurement",
+         source: verification/2026-11-21-b12-v3-validation.md, quote: "97 / 102,567（0.095 %）"}
+      - {item: "R1/R2 attempts 1 and 2 (testbed defects)", status: Not Tested,
+         source: verification/2026-11-21-b12-v3-validation.md, quote: "### 1 回目の試行（2026-11-21）：書込の前に止まった"}
+      - {item: "R1/R2 attempt 3 (addendum r-retry)", status: Not Applicable, reason: "Tested; R1 detected, R2 not detected (injection did not create a release failure)",
+         source: verification/2026-11-21-b12-v3-validation.md, quote: "| R2 | 同上（plant を pause して解除） | Tested（試行 3） | – | – | – | – | **検出しない** |"}
+    limitations: ["each injection once", "S1-S3 cover 3 of 7 subsets (author's choice)", "hvac-sim plant, not BOPTEST"]
+    open_issues: ["RI #657 (cold reader does not deduplicate by id): 2 verify Fails in every run"]
+
+  - id: B13-lifecycle-offline
+    title: Control lifecycle scenarios 1, 2, 3, 5 re-organised from existing runs
+    contract_layer: "conceptual lifecycle L0-L10 (not a product state machine)"
+    fixture_origin: "existing run records (private)"
+    dependencies: {note: "differs per run; see the report's version table"}
+    method: "offline re-organisation; no new run"
+    reproducibility: offline-private
+    results:
+      - {item: "re-organisation only", status: Not Applicable, reason: "no acceptance criterion; not new confirmatory evidence",
+         source: verification/2026-11-21-b13-lifecycle-offline.md, quote: "性格：既知の結果を遷移ごとに並べ直したもの。新しい確証ではない。"}
+    limitations: ["L7 (effective value) and L10 (resync) have no check in S, C, V0-V3 or verify"]
+
+  - id: B13-s4
+    title: "Scenario 4: a priority-16 writer remains after the priority-8 release"
+    contract_layer: "release / priority resolution (BACnet), V2 post-default-readback"
+    fixture_origin: "recorded reads (private); synthetic look-alikes in fixtures/synthetic/b13-s4.json"
+    dependencies: {hvac-sim: 64644ad, RI: 8c87146, BDE_Safety: 5f36355}
+    method: "live run, judged offline by lifecycle.judge (E1, E2, E5)"
+    reproducibility: live
+    results:
+      - {item: "run 1: E1 Pass, E2 Pass, E5 Not Tested (runbook defect) -> scenario Not Tested", status: Not Tested,
+         source: verification/2026-11-21-b13-s4.md, quote: "シナリオ 4 の観測は、run 1 では **Not Tested**（E5 が無い）。E1 と E2 は事前登録どおり。"}
+      - {item: "retry: E1, E2, E5 Pass (BACnet reads)", status: Pass,
+         source: verification/2026-11-21-b13-s4.md, quote: "**シナリオ 4 は、BACnet の読みでは事前登録どおりに観測された（retry）。**"}
+    limitations: ["BACnet-visible priority array and the plant's internal array diverged after a watchdog relinquish (not judged)",
+                  "the second writer is a lab connector, not a real BMS"]
+    open_issues: ["hvac-sim #992 (watchdog relinquish not reflected in priorityArray)", "RI #657"]
+
+  - id: PX4-stage1
+    title: "PX4 stage 1: training, penalty-weight replay, transfer check (offline, exploratory)"
+    contract_layer: "BDE learning / transfer (L0 offline)"
+    fixture_origin: "excitation run records (private)"
+    dependencies: {BDE: 5f36355}
+    method: "offline; no image, plant, BOS or Oracle read"
+    reproducibility: offline-private
+    results:
+      - {item: "weight meeting the §3 criterion", status: Not Applicable, reason: "exploratory; no weight met the criterion, stage 2 objective revised",
+         source: verification/2026-11-08-px4-stage1-analysis.md, quote: "**事前登録 §3 の基準を満たす重みは無い。**"}
+      - {item: "transfer check", status: Not Applicable, reason: "rejected in both directions by BDE point matching (BDE #928)",
+         source: verification/2026-11-08-px4-stage1-analysis.md, quote: "**移転の検査は、両方の向きとも拒否された。**"}
+    limitations: ["exploratory; no pass/fail by design"]
+
+  - id: PX4-stage2-offline
+    title: "PX4 stage 2: offline method comparison (question 3, report only)"
+    contract_layer: "BDE control methods; KPI by Oracle inside the harness only"
+    fixture_origin: "run records (private)"
+    dependencies: {BDE_spec: d46958f, BDE_retrain: 5f36355, hvac-sim: 2eb52e4}
+    method: "A (BOPTEST) 25 runs, B (hvac-sim) 25 runs, 5 windows"
+    reproducibility: offline-private
+    results:
+      - {item: "all runs exit 0 (A 25, B 25)", status: Not Applicable, reason: "report-only question; no pass/fail",
+         source: verification/2026-11-12-px4-stage2-offline.md, quote: "結果：A は 25 回、B は 25 回で、すべて exit 0。"}
+      - {item: "questions 1 and 2 in this report", status: Not Tested,
+         source: verification/2026-11-12-px4-stage2-offline.md, quote: "問い 1 と 2（live の 4 回）は **Not Tested**。"}
+      - {item: "transferred MPC vs in-situ MPC on A (5 days)", status: Not Applicable, reason: "report-only",
+         source: verification/2026-11-12-px4-stage2-offline.md, quote: "| 移した MPC | 0.970 | 0.053 | -0.070（-0.080〜-0.060） | +0.053（-0.062〜+0.169） |"}
+
+  - id: PX4-stage2-live-b
+    title: "PX4 stage 2: live runs on plant B (in-situ and transferred MPC)"
+    contract_layer: "L2 Safety (question 1) and live-vs-offline KPI agreement (question 2)"
+    fixture_origin: "live run records (private)"
+    dependencies: {RI: 8c87146, RI_runtime_image: "f3b93cdf… (truncated in report)", BDE: d46958f}
+    method: "two live runs (hvac-sim), judged by verify checks and stage2_live_b.py"
+    reproducibility: live
+    results:
+      - {item: "question 1 (Safety violations 0) on B in-situ and B transferred (the A column of the quoted row is Not Tested)", status: Pass,
+         source: verification/2026-11-21-px4-stage2-live-b.md, quote: "| 1 Safety の違反 0 | **Pass** | **Pass** | Not Tested |"}
+      - {item: "question 2 (agreement with offline) on B in-situ and B transferred (the A column of the quoted row is Not Tested)", status: Pass,
+         source: verification/2026-11-21-px4-stage2-live-b.md, quote: "| 2 offline と一致 | **Pass** | **Pass** | Not Tested |"}
+      - {item: "questions 1 and 2 overall (4 runs required; A's 2 runs not executed)", status: Not Tested,
+         source: verification/2026-11-21-px4-stage2-live-b.md, quote: "**問い 1、2 の全体は Not Tested（4 回のうち 2 回）**"}
+      - {item: "question 2 energy, live vs offline (in-situ / transferred)", status: Pass,
+         source: verification/2026-11-21-px4-stage2-live-b.md, quote: "| 相対差（許容 5 %） | 2.5e-8 | 3.3e-8 |"}
+    limitations: ["verify check release_slot_8_held_the_last_active_value fails in both runs: a testbed check defect (Testbed #72), results not rewritten"]
+    open_issues: ["RI #657", "Testbed #72"]
+
+  - id: PX4-stage2-live-a
+    title: "PX4 stage 2: live runs on plant A (BOPTEST)"
+    contract_layer: "as PX4-stage2-live-b"
+    fixture_origin: none
+    dependencies: {}
+    method: "not part of the source commit (exists only in an unmerged draft change, excluded from this release)"
+    reproducibility: live
+    results:
+      - {item: "A in-situ / A transferred", status: Not Tested,
+         source: verification/2026-11-21-px4-stage2-live-b.md, quote: "A の live は、pin した BOPTEST の proxy の image（`5de47356…`）が daemon に無く"}

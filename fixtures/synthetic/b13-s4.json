@@ -1,0 +1,144 @@
+{
+ "synthetic": true,
+ "note": "B13 scenario 4 priority reads shaped after the B13 S4 report (values 23.5 / 26.0 / 28.0). Hand-written; not the recorded reads.",
+ "reported_in": "results/source-reports/verification/2026-11-21-b13-s4.md",
+ "p16_value": 26.0,
+ "bde_last": 23.5,
+ "runs": {
+  "run1": {
+   "reported": {
+    "E1": true,
+    "E2": true,
+    "E5": null
+   },
+   "reported_scenario": "Not Tested",
+   "before": {
+    "status": "Pass",
+    "priority_array": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     23.5,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     26.0
+    ],
+    "present_value": 23.5,
+    "relinquish_default": 28.0
+   },
+   "after": {
+    "status": "Pass",
+    "priority_array": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     26.0
+    ],
+    "present_value": 26.0,
+    "relinquish_default": 28.0
+   },
+   "end": {
+    "status": "Fail",
+    "error_type": "ValueError"
+   }
+  },
+  "retry": {
+   "reported": {
+    "E1": true,
+    "E2": true,
+    "E5": true
+   },
+   "reported_scenario": "observed as expected",
+   "before": {
+    "status": "Pass",
+    "priority_array": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     23.5,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     26.0
+    ],
+    "present_value": 23.5,
+    "relinquish_default": 28.0
+   },
+   "after": {
+    "status": "Pass",
+    "priority_array": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     26.0
+    ],
+    "present_value": 26.0,
+    "relinquish_default": 28.0
+   },
+   "end": {
+    "status": "Pass",
+    "priority_array": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "present_value": 28.0,
+    "relinquish_default": 28.0
+   }
+  }
+ }
+}

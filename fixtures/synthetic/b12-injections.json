@@ -1,0 +1,628 @@
+{
+ "synthetic": true,
+ "note": "B12 injections U1-R2 shaped after the B12 report; judged with bos_contract_testbed.v3. These traces are hand-written; they are NOT the recorded traces and reproduce no measured number.",
+ "reported_in": "results/source-reports/verification/2026-11-21-b12-v3-validation.md",
+ "layers": [
+  "V0",
+  "V1",
+  "V2",
+  "V3"
+ ],
+ "cases": {
+  "U1": {
+   "description": "value in degF on a K point",
+   "mechanism": "documented",
+   "reported_first_layer": "V3",
+   "trace": {
+    "kind": "telemetry",
+    "registered": [
+     "P1"
+    ],
+    "sent": [
+     {
+      "point_id": "P1",
+      "timestamp": "2026-01-01T00:00:00Z",
+      "value": 71.6,
+      "attributes": {
+       "gatewayId": "GW-SYNTH",
+       "sim_clock_id": "clk-synth",
+       "sim_config_revision": "r1",
+       "sim_time_quality": "stable_unfenced",
+       "sim_time_s": "3600.0"
+      },
+      "accepted": true
+     }
+    ],
+    "reads": [
+     {
+      "api": "latest",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 71.6,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     },
+     {
+      "api": "history",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 71.6,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     }
+    ],
+    "units": {
+     "P1": "K"
+    }
+   }
+  },
+  "U2": {
+   "description": "value in mK on a K point",
+   "mechanism": "documented",
+   "reported_first_layer": "V3",
+   "trace": {
+    "kind": "telemetry",
+    "registered": [
+     "P1"
+    ],
+    "sent": [
+     {
+      "point_id": "P1",
+      "timestamp": "2026-01-01T00:00:00Z",
+      "value": 295150.0,
+      "attributes": {
+       "gatewayId": "GW-SYNTH",
+       "sim_clock_id": "clk-synth",
+       "sim_config_revision": "r1",
+       "sim_time_quality": "stable_unfenced",
+       "sim_time_s": "3600.0"
+      },
+      "accepted": true
+     }
+    ],
+    "reads": [
+     {
+      "api": "latest",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 295150.0,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     },
+     {
+      "api": "history",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 295150.0,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     }
+    ],
+    "units": {
+     "P1": "K"
+    }
+   }
+  },
+  "U3": {
+   "description": "value in degR on a K point",
+   "mechanism": "documented",
+   "reported_first_layer": "V3",
+   "trace": {
+    "kind": "telemetry",
+    "registered": [
+     "P1"
+    ],
+    "sent": [
+     {
+      "point_id": "P1",
+      "timestamp": "2026-01-01T00:00:00Z",
+      "value": 531.27,
+      "attributes": {
+       "gatewayId": "GW-SYNTH",
+       "sim_clock_id": "clk-synth",
+       "sim_config_revision": "r1",
+       "sim_time_quality": "stable_unfenced",
+       "sim_time_s": "3600.0"
+      },
+      "accepted": true
+     }
+    ],
+    "reads": [
+     {
+      "api": "latest",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 531.27,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     },
+     {
+      "api": "history",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 531.27,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     }
+    ],
+    "units": {
+     "P1": "K"
+    }
+   }
+  },
+  "M1": {
+   "description": "NaN frame; modeled here as rejected by RI (the recorded mechanism of the V1 flag is not stated in the public report)",
+   "mechanism": "assumed",
+   "reported_first_layer": "V1",
+   "trace": {
+    "kind": "telemetry",
+    "registered": [
+     "P1"
+    ],
+    "sent": [
+     {
+      "point_id": "P1",
+      "timestamp": "2026-01-01T00:00:00Z",
+      "value": 295.15,
+      "attributes": {
+       "gatewayId": "GW-SYNTH",
+       "sim_clock_id": "clk-synth",
+       "sim_config_revision": "r1",
+       "sim_time_quality": "stable_unfenced",
+       "sim_time_s": "3600.0"
+      },
+      "accepted": true
+     },
+     {
+      "point_id": "P1",
+      "timestamp": "2026-01-01T00:01:00Z",
+      "value": null,
+      "attributes": {
+       "gatewayId": "GW-SYNTH",
+       "sim_clock_id": "clk-synth",
+       "sim_config_revision": "r1",
+       "sim_time_quality": "stable_unfenced",
+       "sim_time_s": "3600.0"
+      },
+      "accepted": false,
+      "missing": "NaN"
+     }
+    ],
+    "reads": [
+     {
+      "api": "latest",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 295.15,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     },
+     {
+      "api": "history",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 295.15,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     }
+    ],
+    "units": {
+     "P1": "K"
+    }
+   }
+  },
+  "M2": {
+   "description": "+Inf frame; modeled here as rejected by RI (as M1)",
+   "mechanism": "assumed",
+   "reported_first_layer": "V1",
+   "trace": {
+    "kind": "telemetry",
+    "registered": [
+     "P1"
+    ],
+    "sent": [
+     {
+      "point_id": "P1",
+      "timestamp": "2026-01-01T00:00:00Z",
+      "value": 295.15,
+      "attributes": {
+       "gatewayId": "GW-SYNTH",
+       "sim_clock_id": "clk-synth",
+       "sim_config_revision": "r1",
+       "sim_time_quality": "stable_unfenced",
+       "sim_time_s": "3600.0"
+      },
+      "accepted": true
+     },
+     {
+      "point_id": "P1",
+      "timestamp": "2026-01-01T00:01:00Z",
+      "value": null,
+      "attributes": {
+       "gatewayId": "GW-SYNTH",
+       "sim_clock_id": "clk-synth",
+       "sim_config_revision": "r1",
+       "sim_time_quality": "stable_unfenced",
+       "sim_time_s": "3600.0"
+      },
+      "accepted": false,
+      "missing": "Infinity"
+     }
+    ],
+    "reads": [
+     {
+      "api": "latest",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 295.15,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     },
+     {
+      "api": "history",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 295.15,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     }
+    ],
+    "units": {
+     "P1": "K"
+    }
+   }
+  },
+  "M3": {
+   "description": "valueless frame 60 s after a 295.15 frame; modeled here as filled with the previous value (fill value not stated in the public report)",
+   "mechanism": "assumed",
+   "reported_first_layer": "V3",
+   "trace": {
+    "kind": "telemetry",
+    "registered": [
+     "P1"
+    ],
+    "sent": [
+     {
+      "point_id": "P1",
+      "timestamp": "2026-01-01T00:00:00Z",
+      "value": 295.15,
+      "attributes": {
+       "gatewayId": "GW-SYNTH",
+       "sim_clock_id": "clk-synth",
+       "sim_config_revision": "r1",
+       "sim_time_quality": "stable_unfenced",
+       "sim_time_s": "3600.0"
+      },
+      "accepted": true
+     },
+     {
+      "point_id": "P1",
+      "timestamp": "2026-01-01T00:01:00Z",
+      "value": null,
+      "attributes": {
+       "gatewayId": "GW-SYNTH",
+       "sim_clock_id": "clk-synth",
+       "sim_config_revision": "r1",
+       "sim_time_quality": "stable_unfenced",
+       "sim_time_s": "3600.0"
+      },
+      "accepted": true,
+      "missing": "null"
+     }
+    ],
+    "reads": [
+     {
+      "api": "latest",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 295.15,
+        "datetime": "2026-01-01T00:01:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     },
+     {
+      "api": "history",
+      "point_id": "P1",
+      "status": 200,
+      "rows": [
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 295.15,
+        "datetime": "2026-01-01T00:00:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       },
+       {
+        "pointId": "P1",
+        "deviceId": "D1",
+        "value": 295.15,
+        "datetime": "2026-01-01T00:01:00Z",
+        "data": "{\"gatewayId\": \"GW-SYNTH\", \"sim_clock_id\": \"clk-synth\", \"sim_config_revision\": \"r1\", \"sim_time_quality\": \"stable_unfenced\", \"sim_time_s\": \"3600.0\"}"
+       }
+      ]
+     }
+    ],
+    "units": {
+     "P1": "K"
+    }
+   }
+  },
+  "S1": {
+   "description": "dataType removed from the ControlSchema; write accepted (202), read back 15",
+   "mechanism": "documented",
+   "reported_first_layer": "V3",
+   "trace": {
+    "kind": "control",
+    "point_id": "LAB-SP-1",
+    "schema": null,
+    "policy": "allow",
+    "requests": [
+     {
+      "op": "write",
+      "token": "writer",
+      "value": 15.0,
+      "reached_ri": true,
+      "status": 202,
+      "body": {
+       "controlId": "c-synth-1"
+      }
+     }
+    ],
+    "readback": {
+     "expected": 15.0,
+     "observed": [
+      15.0
+     ]
+    },
+    "audit": {
+     "accepted": 1,
+     "rows": 1
+    },
+    "release_after": null,
+    "schema_removed": [
+     "dataType"
+    ]
+   }
+  },
+  "S2": {
+   "description": "minValue and maxValue removed; write accepted (202), read back 15",
+   "mechanism": "documented",
+   "reported_first_layer": "V3",
+   "trace": {
+    "kind": "control",
+    "point_id": "LAB-SP-1",
+    "schema": null,
+    "policy": "allow",
+    "requests": [
+     {
+      "op": "write",
+      "token": "writer",
+      "value": 15.0,
+      "reached_ri": true,
+      "status": 202,
+      "body": {
+       "controlId": "c-synth-1"
+      }
+     }
+    ],
+    "readback": {
+     "expected": 15.0,
+     "observed": [
+      15.0
+     ]
+    },
+    "audit": {
+     "accepted": 1,
+     "rows": 1
+    },
+    "release_after": null,
+    "schema_removed": [
+     "minValue",
+     "maxValue"
+    ]
+   }
+  },
+  "S3": {
+   "description": "maxValue removed; write accepted (202), read back 15",
+   "mechanism": "documented",
+   "reported_first_layer": "V3",
+   "trace": {
+    "kind": "control",
+    "point_id": "LAB-SP-1",
+    "schema": null,
+    "policy": "allow",
+    "requests": [
+     {
+      "op": "write",
+      "token": "writer",
+      "value": 15.0,
+      "reached_ri": true,
+      "status": 202,
+      "body": {
+       "controlId": "c-synth-1"
+      }
+     }
+    ],
+    "readback": {
+     "expected": 15.0,
+     "observed": [
+      15.0
+     ]
+    },
+    "audit": {
+     "accepted": 1,
+     "rows": 1
+    },
+    "release_after": null,
+    "schema_removed": [
+     "maxValue"
+    ]
+   }
+  },
+  "R1": {
+   "description": "connector detached, release answered 202, priority 8 keeps 15.0 (default 12.0)",
+   "mechanism": "documented",
+   "reported_first_layer": "V2",
+   "trace": {
+    "kind": "control",
+    "point_id": "LAB-SP-1",
+    "schema": {
+     "min": 13.0,
+     "max": 17.0
+    },
+    "policy": "allow",
+    "requests": [
+     {
+      "op": "release",
+      "token": "writer",
+      "value": 1,
+      "reached_ri": true,
+      "status": 202,
+      "body": {
+       "controlId": "c-synth-1"
+      }
+     }
+    ],
+    "readback": null,
+    "audit": null,
+    "release_after": {
+     "priority_array": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      15.0,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "present_value": 15.0,
+     "relinquish_default": 12.0
+    }
+   }
+  },
+  "R2": {
+   "description": "plant paused, release answered 202 and took effect after unpause: array empty, present value 12.0",
+   "mechanism": "documented",
+   "reported_first_layer": null,
+   "trace": {
+    "kind": "control",
+    "point_id": "LAB-SP-1",
+    "schema": {
+     "min": 13.0,
+     "max": 17.0
+    },
+    "policy": "allow",
+    "requests": [
+     {
+      "op": "release",
+      "token": "writer",
+      "value": 1,
+      "reached_ri": true,
+      "status": 202,
+      "body": {
+       "controlId": "c-synth-1"
+      }
+     }
+    ],
+    "readback": null,
+    "audit": null,
+    "release_after": {
+     "priority_array": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "present_value": 12.0,
+     "relinquish_default": 12.0
+    }
+   }
+  }
+ }
+}
