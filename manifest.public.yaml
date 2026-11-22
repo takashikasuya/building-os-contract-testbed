@@ -27,7 +27,7 @@ files:
   docs/architecture.md: 51e44be3975f163f6a344c466b0ec561fc8f42f015534ef0f29afb2dac2bb0f5
   docs/contract-model.md: bd6d0004c3f3d08c0ca414ba438a8a3ad5556f82d7706069c3f6e15a3dc8df31
   docs/github-setup.md: 3e9bb784379fe5ca547caf10cd5ef30be1b8f61f2fed389897fd8001b4a7a4e3
-  docs/license-candidates.md: 239ac7d27e1fa9c384787e4750d8cd7bce56fe8527a0f3e712a26c0f47878698
+  docs/license-candidates.md: df0a38d7be75633d8e2af5be37a87ad841df0fd27f59f71d4debcdeac8d79a01
   docs/limitations.md: dedbb57dce4d00ddbd796a1530f80b7bc5025c61fd6248f07789c70e5acbbe5f
   docs/publication-audit.md: cc5554316b4063b54ce71b8b994d515335a8b56ccf63bdba0a5bafc8d9d45f17
   docs/reproducibility.md: 992d66f01890f51df276c5dbae8ddfae43df6be5805274472b0d62e60b68d404
@@ -82,5 +82,5 @@ files:
   tests/offline/test_release_gate.py: e65676c0dd68ee6be6197537ef845d4ac5b0584791777b83e07a37bf30fb0d5e
   tests/offline/test_results_traceability.py: c543c5cfc225dffa9f49c3d2d443935149aec31b1bdcef2e9b8337b9d1440f21
   tests/offline/test_synthetic_fixtures.py: fa4970a1f4d3c304f6c4e25929a413056934e81d311b0eda47c70021020eb21e
-  tools/export_reports.py: 35b39c93297fe6cde13da9849b86e9f18334a4135fab8e27b28c29c80870f22d
+  tools/export_reports.py: 5b34bdc7b61c955e8cf77ddbdaaa9a2ae7ecada598192418d17b2f0a7296e0cb
   tools/release_gate.py: df89c7fdfec6208de1a8fb5e4ff8133f7dd8959377faaa69e2b8340bbb644863

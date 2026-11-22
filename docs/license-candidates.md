@@ -23,6 +23,21 @@ BLOCKED.
 | B | MIT | CC-BY-4.0 | shortest; no patent clause |
 | C | BSD-3-Clause | CC-BY-4.0 | close to BOPTEST's family of licenses (BOPTEST license not verified here) |
 
+### Recommendation (proposal only, not a decision)
+
+**Option A: Apache-2.0 for code, CC-BY-4.0 for docs, results and fixtures.** Reasons:
+
+- The commit identity is an organisational address. Corporate legal reviews usually prefer Apache-2.0: it has an
+  explicit patent grant and patent-retaliation clause, and its NOTICE mechanism fits the existing `NOTICE.md`.
+- Splitting code and documentation lets third parties reuse the reports and the contract suite with attribution,
+  while the reports keep their author credit (the results support a paper).
+- It is compatible with the MIT-licensed dependencies and with permissive licenses used nearby in the building-data
+  ecosystem (e.g. BSD-style licenses). Those licenses were not verified here.
+
+If it is chosen, the rights holder adds `LICENSE` (Apache-2.0 text), `LICENSES/CC-BY-4.0.txt`, a copyright line in
+`NOTICE.md`, `license = "Apache-2.0"` in `pyproject.toml`, `license: Apache-2.0` in `CITATION.cff`, and records the
+choice in `release/approvals.yaml`.
+
 All three are compatible with the dependencies. Whatever is chosen, the cited test identifiers of other projects
 remain names, not licensed content. Each owning project should still confirm that citing them is acceptable.
 

@@ -9,7 +9,7 @@ turns links to non-imported files into plain text, and refuses to write when
   * the multiset of digit sequences changes (a number would have been altered), or
   * a forbidden token survives the redaction.
 
-    python tools/export_reports.py --source /path/to/building-os-e2e --rules /private/redaction-rules.yaml [--check]
+    python tools/export_reports.py --source /path/to/building-os-e2e --rules /path/to/building-os-e2e/public-export/redaction-rules.yaml [--check]
 
 The rules file holds the concrete patterns (the identifiers being removed) and is kept outside this tree:
 
