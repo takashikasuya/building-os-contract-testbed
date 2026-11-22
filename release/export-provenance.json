@@ -1,0 +1,275 @@
+{
+ "generated_by": "tools/export_reports.py",
+ "files": [
+  {
+   "src": "docs/verification/2026-11-08-b3-injection.md",
+   "dst": "results/source-reports/verification/2026-11-08-b3-injection.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "fe029c47c0436123df23876e3ac2b5c643afe4fb94ea5d43064bdd376c66ace7",
+   "published_sha256": "b5ace9aea0ab1bf606755b23d17eefdf5a2e86374c3867d7b6af7408c88e1320",
+   "redactions": {
+    "approver-handle": 1
+   },
+   "links_rewritten": 1,
+   "links_delinked": 1,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/verification/2026-11-21-b11-contract-layers.md",
+   "dst": "results/source-reports/verification/2026-11-21-b11-contract-layers.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "ea1d73425aa21a0e3e3ee90003e282e90a7324405ea807604735bd18a82912fd",
+   "published_sha256": "ea1d73425aa21a0e3e3ee90003e282e90a7324405ea807604735bd18a82912fd",
+   "redactions": {},
+   "links_rewritten": 1,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/verification/2026-11-21-b12-v3-validation.md",
+   "dst": "results/source-reports/verification/2026-11-21-b12-v3-validation.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "d3a214ddfa6d2bad9a215a8d5597a56909276f6a6f7a7d5598cb450dd42f0804",
+   "published_sha256": "5b096dceaddf1edb291fad4ce82620ba362b70b9e2aba48b5a848ba939ec993a",
+   "redactions": {
+    "approver-handle": 1
+   },
+   "links_rewritten": 0,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/verification/2026-11-21-b13-lifecycle-offline.md",
+   "dst": "results/source-reports/verification/2026-11-21-b13-lifecycle-offline.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "2d30f587583ed271d2335750f9ba29f379d7acca43baef6e53f9565f18a2c249",
+   "published_sha256": "9b54e545f75f1e1e2baab5a72c6c5b54772d72ae1fd15830168c530d02454ea8",
+   "redactions": {},
+   "links_rewritten": 10,
+   "links_delinked": 5,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/verification/2026-11-21-b13-s4.md",
+   "dst": "results/source-reports/verification/2026-11-21-b13-s4.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "830a57edb235201751ad641821d92b57d5b63491c949776b58094fed1faa5150",
+   "published_sha256": "f9902c8d3164e7d190d0d4b474cab1515a923644ca835be638406425dae7862f",
+   "redactions": {
+    "approver-handle": 1,
+    "private-github-owner": 1
+   },
+   "links_rewritten": 0,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/verification/2026-11-08-px4-stage1-analysis.md",
+   "dst": "results/source-reports/verification/2026-11-08-px4-stage1-analysis.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "0cc21d5194c982ebb1c8d7ff434dbf690e4e5caa15ea13cef7e75ebb72045700",
+   "published_sha256": "21b1994955d7ff50a3e6e609be5d906b209814a42c56869172250276e3c8222c",
+   "redactions": {
+    "private-github-owner": 1
+   },
+   "links_rewritten": 3,
+   "links_delinked": 3,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/verification/2026-11-12-px4-stage2-offline.md",
+   "dst": "results/source-reports/verification/2026-11-12-px4-stage2-offline.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "aeef58ec1779e16aa33bfb679b96387f014e462193925c6d356bc6934890ce7e",
+   "published_sha256": "aeef58ec1779e16aa33bfb679b96387f014e462193925c6d356bc6934890ce7e",
+   "redactions": {},
+   "links_rewritten": 3,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/verification/2026-11-21-px4-stage2-live-b.md",
+   "dst": "results/source-reports/verification/2026-11-21-px4-stage2-live-b.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "0d98f73946f5d84d03efdb4b09635e4fa40fd9acf170bafae606807fb510d4ac",
+   "published_sha256": "2f7f6191efcbbd270e51176b22a76ce5924498279ce42e2bb47ca42bc5183bb3",
+   "redactions": {
+    "approver-handle": 1
+   },
+   "links_rewritten": 0,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/b2-contract-injection.md",
+   "dst": "results/source-reports/preregistration/b2-contract-injection.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "e7c910d62beebbfa7deb672f788cb3fdcaa13ea5ef22cb1a4dedb10628950e79",
+   "published_sha256": "0a7dd526266bca1403192cd110aff7011d9d13a7bc17e0817961bac14c00b308",
+   "redactions": {},
+   "links_rewritten": 1,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/b11-contract-layers.md",
+   "dst": "results/source-reports/preregistration/b11-contract-layers.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "e3cf47631c0e98c74a3e45c509e78f4bd8864b601b92787cf94f6336b03ff3ea",
+   "published_sha256": "e3cf47631c0e98c74a3e45c509e78f4bd8864b601b92787cf94f6336b03ff3ea",
+   "redactions": {},
+   "links_rewritten": 1,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/b12-v3-validation.md",
+   "dst": "results/source-reports/preregistration/b12-v3-validation.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "cc2b4cf3066a4269f6771c2b42b2ab7d297ef440333b2d8139da13522569105d",
+   "published_sha256": "0732e76f6ea09dcf99a175e5582d9117d1ce01ac5218bf83e1291b1fa76f716e",
+   "redactions": {
+    "approver-handle": 1
+   },
+   "links_rewritten": 1,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/b12-v3-validation-addendum-r-retry.md",
+   "dst": "results/source-reports/preregistration/b12-v3-validation-addendum-r-retry.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "65b12535007e042dad0fa4750da37cdedd97e3c6abe1dd9e57812b81ab53b442",
+   "published_sha256": "65b12535007e042dad0fa4750da37cdedd97e3c6abe1dd9e57812b81ab53b442",
+   "redactions": {},
+   "links_rewritten": 1,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/b13-lifecycle-s4.md",
+   "dst": "results/source-reports/preregistration/b13-lifecycle-s4.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "18953bbbb6239be915c341217994a9c2d3c0daa7fd5e829a151c10b6c86af4b4",
+   "published_sha256": "32da825e43b235c1e4b81021e9c5784fe60e5b61814a3a8457c20c35bb2e7803",
+   "redactions": {
+    "approver-handle": 1
+   },
+   "links_rewritten": 0,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/px4-stage1.md",
+   "dst": "results/source-reports/preregistration/px4-stage1.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "671786e5e189110c90b21d3abc1206f58a9c399f473e839f9960ebd96359ba35",
+   "published_sha256": "3055d331cb904a0b8bc76565e81d8a4f2be657c67dc46f0bdb19e23241f25653",
+   "redactions": {},
+   "links_rewritten": 0,
+   "links_delinked": 2,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/px4-stage1-addendum-replay.md",
+   "dst": "results/source-reports/preregistration/px4-stage1-addendum-replay.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "7ce2e6858fb07a1a37c5684f82abb4afc17b4430360e8407d71f9a68946e90ce",
+   "published_sha256": "a766aa59d93df759afcc0b6f51765fee0f4a214acf0059277c32288ad4cd151d",
+   "redactions": {},
+   "links_rewritten": 1,
+   "links_delinked": 1,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/px4-stage1b.md",
+   "dst": "results/source-reports/preregistration/px4-stage1b.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "d90742f28e22f0b11d5fb7fc947254f2b3ef2b5ee3fc4e5dae2e3d11f45dd602",
+   "published_sha256": "d90742f28e22f0b11d5fb7fc947254f2b3ef2b5ee3fc4e5dae2e3d11f45dd602",
+   "redactions": {},
+   "links_rewritten": 4,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/px4-stage2.md",
+   "dst": "results/source-reports/preregistration/px4-stage2.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "8d77a0406c964440847061579ba79f29f27aadb3ad35b42366357346986d4206",
+   "published_sha256": "53f5cbe8b10b36b67e83226bfb4efde3a7642e2f148970d90736d3b249786217",
+   "redactions": {},
+   "links_rewritten": 4,
+   "links_delinked": 4,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/px4-stage2-addendum-b-retrain.md",
+   "dst": "results/source-reports/preregistration/px4-stage2-addendum-b-retrain.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "e1d0bddf96bcc3867a086119a2ae9c4f04020d7072f7563a3deb61387ccf1799",
+   "published_sha256": "e1d0bddf96bcc3867a086119a2ae9c4f04020d7072f7563a3deb61387ccf1799",
+   "redactions": {},
+   "links_rewritten": 3,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/px4-stage2-addendum-live-b-window.md",
+   "dst": "results/source-reports/preregistration/px4-stage2-addendum-live-b-window.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "ab0e4c2a0ce4ee02f97e68ee4ed36900b3bf108e1939b61df31df6253c707824",
+   "published_sha256": "ab0e4c2a0ce4ee02f97e68ee4ed36900b3bf108e1939b61df31df6253c707824",
+   "redactions": {},
+   "links_rewritten": 1,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/px4-stage2-addendum-pin-points.md",
+   "dst": "results/source-reports/preregistration/px4-stage2-addendum-pin-points.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "ad34aac48acffa52333b306b833e237a0adb21b082a98973fba94b836a4f30fc",
+   "published_sha256": "3505856fa8b063cbbc28df03d05cd89427cd2e01acfb350a3210cbd6a1aad688",
+   "redactions": {},
+   "links_rewritten": 1,
+   "links_delinked": 1,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/preregistration/px4-stage2-addendum-ri-runtime.md",
+   "dst": "results/source-reports/preregistration/px4-stage2-addendum-ri-runtime.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "8e05769b6ed24ac520733450165d30f67e6538726c659d5caf2dca0be9073c8b",
+   "published_sha256": "8e05769b6ed24ac520733450165d30f67e6538726c659d5caf2dca0be9073c8b",
+   "redactions": {},
+   "links_rewritten": 0,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/contract-suite/README.md",
+   "dst": "results/source-reports/contract-suite/README.md",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "0fcba8f82e97418dcb3a38c4ba3ab715d08ce744a11fea494e484ecb8c7ad0ad",
+   "published_sha256": "afd421387bb4f72e10a064dd4de349ae77f19d9cbbe23be0e9f44f179e951c4f",
+   "redactions": {},
+   "links_rewritten": 2,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  },
+  {
+   "src": "docs/contract-suite/bos-contract-suite.yaml",
+   "dst": "src/bos_contract_testbed/data/bos-contract-suite.yaml",
+   "source_commit": "e7e020dfa9ecf1df5afbcb555b84f3f055473943",
+   "source_sha256": "ce211aa48e98ee10f70dbe4b5874cd66a7b78c3dd2eed1af9fce4602843cc17e",
+   "published_sha256": "3b26caa22b631f5ea1e1639baae31171206f38ed3fa137dbf97dc3b9069f788f",
+   "redactions": {
+    "private-github-owner": 2
+   },
+   "links_rewritten": 0,
+   "links_delinked": 0,
+   "digit_sequences_preserved": true
+  }
+ ]
+}
