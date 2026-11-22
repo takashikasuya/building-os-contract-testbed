@@ -131,6 +131,12 @@ def forbidden_hits(line: str, hashed: list[dict]) -> int:
 def scan(gate, files, spec):
     secrets, private, forbidden = [], [], []
     hashed = spec["forbidden_token_sha256"]
+    # The author's name is published on purpose in attribution files (copyright, citation, approvals). The exemption
+    # never covers imported (redacted) files.
+    attribution = set(spec.get("attribution_files") or [])
+    imported_dst = {entry["dst"] for entry in spec["imported"]}
+    for rel in sorted(attribution & imported_dst):
+        forbidden.append(f"{rel}: an imported file cannot be an attribution file")
     for rel in files:
         text = read_text(rel)
         if text is None:
@@ -144,7 +150,7 @@ def scan(gate, files, spec):
                     if name == "e-mail address" and m.group(0) in ALLOWED_EMAILS:
                         continue
                     private.append(f"{rel}:{lineno}: {name}: {m.group(0)}")
-            if forbidden_hits(line, hashed):
+            if rel not in attribution and forbidden_hits(line, hashed):
                 forbidden.append(f"{rel}:{lineno}: a forbidden identifier (matched by sha256)")
     gate.add("secret scan (working tree)", "FAIL" if secrets else "PASS", secrets)
     gate.add("private URL / internal IP / personal data scan", "FAIL" if private else "PASS", private)

@@ -1,12 +1,13 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below. (Authors to be confirmed before publication.)"
+message: "If you use this software, please cite it as below."
 title: "building-os-contract-testbed: offline contract checks for Building OS integration experiments"
 type: software
-version: 0.1.0.dev0
+version: 0.1.0
 authors:
-  - name: "TO BE CONFIRMED"
+  - family-names: KASUYA
+    given-names: Takashi
 license: Apache-2.0
-# repository-code: to be added when the public repository exists
+repository-code: https://github.com/takashikasuya/building-os-contract-testbed
 keywords:
   - building automation
   - contract testing

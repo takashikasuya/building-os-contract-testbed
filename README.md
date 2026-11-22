@@ -23,7 +23,7 @@ python -m venv .venv
 python -m pip install -e ".[test]"
 python -m pytest -q tests/offline tests/contract
 python -m bos_contract_testbed.suite          # structure and counts of the contract suite
-python tools/release_gate.py --allow-blocked  # publication checks (BLOCKED until approvals are recorded)
+python tools/release_gate.py --allow-blocked  # publication checks (allowlist, scans, approvals)
 ```
 
 Python 3.10 or newer. The only runtime dependency is PyYAML.
@@ -81,4 +81,4 @@ Third-party names and cited test identifiers are not covered by these licenses (
 - 結果は Pass / Fail / Skip / Not Tested を区別し、元の報告書（`results/source-reports/`、日本語、匿名化のみで
   数値は不変）から引用しています。
 - ライセンス：コードは Apache-2.0、文書・結果・fixture・契約試験一式の YAML は CC-BY-4.0 です。
-- 公開には人の承認（権利者、組織の許可、共著者の同意、公開範囲の変更など）が必要です。それまでは `BLOCKED` です。
+- 公開前のチェックは `tools/release_gate.py` で行います。人の承認は `release/approvals.yaml` に記録します。

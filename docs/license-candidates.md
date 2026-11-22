@@ -1,16 +1,15 @@
 # License candidates and rights record
 
 **Selected 2026-11-23: option A, Apache-2.0 for code and CC-BY-4.0 for docs, results, fixtures and data** (see the
-README for the file-level split). `LICENSE` and `LICENSES/CC-BY-4.0.txt` hold the texts. The rights holder still has to
-be confirmed and the choice approved in [release/approvals.yaml](../release/approvals.yaml); until then the release
-gate reports BLOCKED.
+README for the file-level split). `LICENSE` and `LICENSES/CC-BY-4.0.txt` hold the texts. Rights holder: Takashi KASUYA
+(confirmed by the author, 2026-11-23). Approvals are recorded in [release/approvals.yaml](../release/approvals.yaml).
 
 ## Facts established
 
 | Question | Finding |
 |---|---|
 | License of the source repository | none (no LICENSE file; GitHub `licenseInfo: null`) |
-| Rights holder | **not confirmed**. Commits use one person's identities, but employment or organisation terms may give the rights to someone else. Not inferred. |
+| Rights holder | Takashi KASUYA (personal), confirmed by the author on 2026-11-23 |
 | Third-party code copied | none. `checks.py`, `layers.py`, `v3.py`, `lifecycle.py`, `suite.py` and the ported tests come from the private testbed itself. |
 | Third-party text cited | test *identifiers* of Building OS RI (public repository, no license detected) and tenant-portal (private), inside the suite YAML |
 | Unpublished work | the contract model's Table 5 and the experiment results support an unpublished paper |
@@ -44,7 +43,7 @@ remain names, not licensed content. Each owning project should still confirm tha
 
 ## Checklist before choosing
 
-- [ ] Rights holder identified (person or organisation), with the basis (employment or contract terms)
+- [x] Rights holder identified (person or organisation), with the basis (employment or contract terms)
 - [ ] Organisations with a claim agree to publication (employer, GUTP consortium if applicable, funders)
 - [ ] Co-authors of the unpublished paper agree to disclose the contract suite and results before publication
 - [ ] Owners of Building OS RI and tenant-portal have no objection to the cited test identifiers

@@ -12,7 +12,7 @@ license:
 
 copyright_holder:
   approved: false
-  holder: null          # not inferred; the person or organisation that holds the rights (employment / contract terms)
+  holder: "Takashi KASUYA"  # stated by the author on 2026-11-23 (recorded by the AI agent); the person or organisation that holds the rights (employment / contract terms)
   by: null
   date: null
 
@@ -35,13 +35,13 @@ third_party_material:
 
 commit_identity:
   approved: false       # the author name / e-mail recorded in the commits of this repository will become public
-  identity: null
+  identity: "Takashi Kasuya, author and committer of every commit (organisational e-mail, see git log)"  # stated 2026-11-23
   by: null
   date: null
 
 push_and_visibility:
   approved: false       # creating the GitHub repository, pushing, and any visibility change
-  repository: null
+  repository: github.com/takashikasuya/building-os-contract-testbed
   visibility: private
   by: null
   date: null

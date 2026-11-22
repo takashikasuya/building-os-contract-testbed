@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 — unreleased (release candidate, publication BLOCKED pending approvals)
+## 0.1.0 — 2026-11-23
 
 First public package, prepared from the private integration testbed at `e7e020d`. It starts with a fresh history,
 and none of the source history is included.

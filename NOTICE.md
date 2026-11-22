@@ -1,6 +1,6 @@
 # Notice
 
-**Copyright holder: to be confirmed** (see [docs/publication-audit.md](docs/publication-audit.md) §4).
+Copyright 2026 Takashi KASUYA
 Code is licensed under the Apache License 2.0 ([LICENSE](LICENSE)). Documentation, results, fixtures and the contract
 suite data are licensed under CC-BY-4.0 ([LICENSES/CC-BY-4.0.txt](LICENSES/CC-BY-4.0.txt)). See the README for the
 file-level split. The third-party names below are not covered by either license.

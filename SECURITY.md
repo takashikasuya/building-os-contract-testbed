@@ -11,9 +11,8 @@ scan on every push.
 
 ## Reporting
 
-**Contact channel: to be confirmed before publication.** Once the repository is public, use GitHub's private
-vulnerability reporting ("Report a vulnerability" under the Security tab). Do not open a public issue for a suspected
-leak of credentials or internal information.
+Use GitHub's private vulnerability reporting: "Report a vulnerability" under the repository's Security tab. Do not
+open a public issue for a suspected leak of credentials or internal information.
 
 Please include the file, the line, and why you believe it is sensitive. A suspected leak is handled by removing the
 material, rotating any affected credential in the owning system, and rewriting history if needed.

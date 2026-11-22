@@ -1,7 +1,7 @@
 # Pins and file hashes of the public package. The part above the "generated below" marker is authored;
 # the file list is regenerated with `python tools/release_gate.py --update-manifest` and checked by the gate.
 schema_version: 1
-package: {name: bos-contract-testbed, version: 0.1.0.dev0}
+package: {name: bos-contract-testbed, version: 0.1.0}
 source: {repo: building-os-e2e (private), commit: e7e020dfa9ecf1df5afbcb555b84f3f055473943, date: "2026-11-22"}
 experiments_rerun_for_this_release: false
 # Dependency versions as stated by the reports (abbreviated where the reports abbreviate). Experiment-level detail
@@ -19,27 +19,27 @@ runtime_dependencies: {PyYAML: ">=6.0", pytest: ">=8 (tests only)"}
 files:
   .github/workflows/offline-ci.yml: f9fa781ff3187cdd6619e2e33d369b7972fba5cd5c9ab0bc3b677bf4219b6421
   .gitignore: 4ad789029b2fabcbfe7ac569063355c750ca872f3ebdbed7d296a87226c8c485
-  CHANGELOG.md: ab786cb55d47fa4e44696bbd01ca5516273652da41933c8faef220b922eac0c2
-  CITATION.cff: 4d194d14a071e1bfe18cf91b0830f7c6572a330ca6557d226442b288d59fc03f
+  CHANGELOG.md: 5d71648510e3c984a53af11954a2ad6227ebbb121351691c93801d7052057e40
+  CITATION.cff: 8718686f092f35fa13a00f24cc9134f907dd1a17b0651d2729ea9b13956c6548
   LICENSE: cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
   LICENSES/CC-BY-4.0.txt: 9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411
-  NOTICE.md: 1838afaa7f7a1a8ddf87015380f122df018a7d91f55ce89d1e524c353f3cbc0c
-  README.md: 1d1d8133e88b1199a2abd3dfee97ca0b00137f1c746606a61edac298d246d831
-  SECURITY.md: 015ab9834eb8bdd16ea1b3e264d4a7ceed0eb3a304bb3629996e4ecfc0104634
+  NOTICE.md: 67ab0cfbd6890779aba44edb2bd84ce21c8f720ffaa748c81f818a3c0e732876
+  README.md: 9b1451eaa894bb00fa76d20974c0b75330ecb7145c05aa816e4a62e8c96c52d2
+  SECURITY.md: fa37c9eb6cf0ef09e59fd73cf08e4a58e3a3264740d98e3727b36f8bcb9e3fd6
   docs/architecture.md: 51e44be3975f163f6a344c466b0ec561fc8f42f015534ef0f29afb2dac2bb0f5
   docs/contract-model.md: bd6d0004c3f3d08c0ca414ba438a8a3ad5556f82d7706069c3f6e15a3dc8df31
   docs/github-setup.md: 3e9bb784379fe5ca547caf10cd5ef30be1b8f61f2fed389897fd8001b4a7a4e3
-  docs/license-candidates.md: 7cf94af0aae94b80273519ed51cc96f6e87f2bba2c8fbad033dbe2b3742540c7
+  docs/license-candidates.md: c904d5f55e635bef89638c0401ef3d3ac7496be75ba5feeb5c0b20ee7b4ad424
   docs/limitations.md: dedbb57dce4d00ddbd796a1530f80b7bc5025c61fd6248f07789c70e5acbbe5f
-  docs/publication-audit.md: cdb1b70444db979010dbe64d12671b518f4b1cf253c12247ac62fa3e1820d914
+  docs/publication-audit.md: 8b5d79c14658d980fbbc2bbd9fcffc035a0830beb22d25b031224ca0e8ee84a8
   docs/reproducibility.md: 992d66f01890f51df276c5dbae8ddfae43df6be5805274472b0d62e60b68d404
   fixtures/README.md: 504854751ea5311b4317b8672f4fb7c1f9e1be2a7af637709e89d3ce08f3aca7
   fixtures/synthetic/b11-injections.json: 83191bd7980747f88ca69b8283e21066fdf071d263cb32a10534fe53396b046b
   fixtures/synthetic/b12-injections.json: c98ea87e6e28bdab9bfffcd533706ebdd0b9a8f6cdfcf7162e5648d06735d796
   fixtures/synthetic/b13-s4.json: 38e0569519b126993a60b28b4438cdf07cc0366f53b421aed42e3dbb5439683d
-  public-export.yaml: 235e75e521e6ad68f3f1aed77f5edeff4d66677771ee440d586cd2a2b415f930
-  pyproject.toml: 17a42fe4c1b9903b1164aac379b19661640193e600b036d83d2ca88147442f7d
-  release/approvals.yaml: 9f65b5ee68915144b27f2d786a5a428b66ea98a07a4e064c398b8fc7dabebe57
+  public-export.yaml: 5e8a18d914499cf02090768839fb388c9aa93caf205ad2bb75890e0d7a72b353
+  pyproject.toml: b17b58ab2f7732658510131fe204e97c98e596271c5cd3907eee9a7a9c8099a5
+  release/approvals.yaml: f40f38c1ea86c14b850b22aaef69cd1748e5512e1b439c9bb33779676dee7304
   release/export-provenance.json: fbbc1aca81e7addbaf8366a7929ff632a989964b532aca52c153beea3cdfff61
   results/experiments.yaml: 5b82ca72cf91395770ea83e9c3bc3429bb5575c96b0db1ab5089b1e9d19a789b
   results/source-reports/README.md: 66dc34e753b75b70f91d9941dc3d1e4619cd547958226708713201509e270fea
@@ -66,7 +66,7 @@ files:
   results/source-reports/verification/2026-11-21-b13-s4.md: f9902c8d3164e7d190d0d4b474cab1515a923644ca835be638406425dae7862f
   results/source-reports/verification/2026-11-21-px4-stage2-live-b.md: 2f7f6191efcbbd270e51176b22a76ce5924498279ce42e2bb47ca42bc5183bb3
   results/summary.md: 7409ece6f3a933e8b444f0776eaabde261661fd7781525daa515476df76ab7c5
-  src/bos_contract_testbed/__init__.py: 9bfa517dad4364e14f4dc4baaaa4d2d871f8756c519e92760f79c145ecc4febb
+  src/bos_contract_testbed/__init__.py: 521cce0b5bd1e9b68f2f0bfee73b06265ab63388eda064a34b0441ea1960f2c5
   src/bos_contract_testbed/checks.py: f8fd661c3f46b4d52c40142b8747ed1d2b3439033057224aefdf56764dd36410
   src/bos_contract_testbed/data/bos-contract-suite.yaml: 3b26caa22b631f5ea1e1639baae31171206f38ed3fa137dbf97dc3b9069f788f
   src/bos_contract_testbed/layers.py: 5d8616b36b901ea44291e2f6a17e9e90351a01fae0e6ccf985b222b302493a35
@@ -85,4 +85,4 @@ files:
   tests/offline/test_results_traceability.py: c543c5cfc225dffa9f49c3d2d443935149aec31b1bdcef2e9b8337b9d1440f21
   tests/offline/test_synthetic_fixtures.py: fa4970a1f4d3c304f6c4e25929a413056934e81d311b0eda47c70021020eb21e
   tools/export_reports.py: 5b34bdc7b61c955e8cf77ddbdaaa9a2ae7ecada598192418d17b2f0a7296e0cb
-  tools/release_gate.py: df89c7fdfec6208de1a8fb5e4ff8133f7dd8959377faaa69e2b8340bbb644863
+  tools/release_gate.py: 9397c23ac2336615312c1ccca272ea4c2b38c590b83f9e31573b3794e224ab3d

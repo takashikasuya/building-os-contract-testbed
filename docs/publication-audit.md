@@ -1,7 +1,7 @@
 # Publication audit
 
-Status: **BLOCKED** until the approvals in [release/approvals.yaml](../release/approvals.yaml) are recorded by a human.
-Prepared 2026-11-22. This audit decides only what *may* be published. It publishes nothing.
+Prepared 2026-11-22, updated 2026-11-23. This audit records what may be published and why. The human approvals are
+recorded in [release/approvals.yaml](../release/approvals.yaml); `tools/release_gate.py` reports PASS only when all of them are.
 
 ## 1. Source inventory
 
@@ -50,10 +50,10 @@ The machine-readable allowlist is [public-export.yaml](../public-export.yaml). T
 
 | Material | Origin | Status |
 |---|---|---|
-| Testbed code, tests, reports | Author of the private repository. **Rights holder not confirmed** (personal vs. employer or organisation). | `copyright_holder`, `organization_publication_permission` pending |
-| Contract model C(o) and Table 5 conditions | Unpublished paper (`bde-paper`, private) | `results_disclosure` pending |
-| Contract suite test ids (`ri-unit:*`) | Building OS RI (`gutp-bim/gutp-building-os-ri`, public on GitHub; GitHub reports **no detected license**) | Only test *names* are cited, no code. `third_party_material` pending. |
-| Test ids `tp:*` | tenant-portal (private) | names only. Pending. |
+| Testbed code, tests, reports | Author of the private repository. Rights holder confirmed by the author on 2026-11-23: Takashi KASUYA (personal). | `copyright_holder`, `organization_publication_permission` in release/approvals.yaml |
+| Contract model C(o) and Table 5 conditions | Unpublished paper (`bde-paper`, private) | `results_disclosure` in release/approvals.yaml |
+| Contract suite test ids (`ri-unit:*`) | Building OS RI (`gutp-bim/gutp-building-os-ri`, public on GitHub; GitHub reports **no detected license**) | Only test *names* are cited, no code. `third_party_material` in release/approvals.yaml. |
+| Test ids `tp:*` | tenant-portal (private) | names only. `third_party_material` in release/approvals.yaml. |
 | Product names: BOPTEST, Nexus Gateway, Building OS RI, BDE, SBCO Data Model Builder, hvac-sim | respective owners | named for identification only (NOTICE.md) |
 | Synthetic fixtures | written for this repository | no third-party data |
 | Datasets, weather files, images, specifications | none exported | — |
@@ -69,4 +69,7 @@ See [results/summary.md](../results/summary.md) and [results/experiments.yaml](.
 
 ## 6. Decision
 
-**Publication on hold (BLOCKED).** Technical checks can pass, but these items are unresolved: approval of the selected license (Apache-2.0 code, CC-BY-4.0 docs/results; texts added 2026-11-23), rights holder, organisation permission, co-author consent to disclose the results, third-party review, commit identity, and push/visibility approval.
+Publishable when `tools/release_gate.py` reports PASS. Decided: license (Apache-2.0 code, CC-BY-4.0 docs/results,
+2026-11-23) and rights holder (Takashi KASUYA, 2026-11-23). Each approval (license, rights holder, organisation
+permission, co-author consent to disclose the results, third-party review, commit identity, push/visibility) is
+recorded by a human in release/approvals.yaml.
