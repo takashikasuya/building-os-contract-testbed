@@ -29,7 +29,7 @@ files:
   docs/architecture.md: 51e44be3975f163f6a344c466b0ec561fc8f42f015534ef0f29afb2dac2bb0f5
   docs/contract-model.md: bd6d0004c3f3d08c0ca414ba438a8a3ad5556f82d7706069c3f6e15a3dc8df31
   docs/github-setup.md: 3e9bb784379fe5ca547caf10cd5ef30be1b8f61f2fed389897fd8001b4a7a4e3
-  docs/license-candidates.md: c904d5f55e635bef89638c0401ef3d3ac7496be75ba5feeb5c0b20ee7b4ad424
+  docs/license-candidates.md: 0ca291b653f1a855f5094b2e02c801fdc91411ebbb1af671aec34cf7df35b5cc
   docs/limitations.md: dedbb57dce4d00ddbd796a1530f80b7bc5025c61fd6248f07789c70e5acbbe5f
   docs/publication-audit.md: 8b5d79c14658d980fbbc2bbd9fcffc035a0830beb22d25b031224ca0e8ee84a8
   docs/reproducibility.md: 992d66f01890f51df276c5dbae8ddfae43df6be5805274472b0d62e60b68d404
@@ -39,7 +39,7 @@ files:
   fixtures/synthetic/b13-s4.json: 38e0569519b126993a60b28b4438cdf07cc0366f53b421aed42e3dbb5439683d
   public-export.yaml: 5e8a18d914499cf02090768839fb388c9aa93caf205ad2bb75890e0d7a72b353
   pyproject.toml: b17b58ab2f7732658510131fe204e97c98e596271c5cd3907eee9a7a9c8099a5
-  release/approvals.yaml: f40f38c1ea86c14b850b22aaef69cd1748e5512e1b439c9bb33779676dee7304
+  release/approvals.yaml: f5bb4103f4fc079dd19e7817f8deef907709e3bb7406ac422455d4e69ba9d83e
   release/export-provenance.json: fbbc1aca81e7addbaf8366a7929ff632a989964b532aca52c153beea3cdfff61
   results/experiments.yaml: 5b82ca72cf91395770ea83e9c3bc3429bb5575c96b0db1ab5089b1e9d19a789b
   results/source-reports/README.md: 66dc34e753b75b70f91d9941dc3d1e4619cd547958226708713201509e270fea

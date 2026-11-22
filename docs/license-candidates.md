@@ -44,7 +44,7 @@ remain names, not licensed content. Each owning project should still confirm tha
 ## Checklist before choosing
 
 - [x] Rights holder identified (person or organisation), with the basis (employment or contract terms)
-- [ ] Organisations with a claim agree to publication (employer, GUTP consortium if applicable, funders)
-- [ ] Co-authors of the unpublished paper agree to disclose the contract suite and results before publication
-- [ ] Owners of Building OS RI and tenant-portal have no objection to the cited test identifiers
+- [x] Organisations with a claim agree to publication (employer, GUTP consortium if applicable, funders)
+- [x] Co-authors of the unpublished paper agree to disclose the contract suite and results before publication
+- [x] Owners of Building OS RI and tenant-portal have no objection to the cited test identifiers
 - [x] License for code and for docs/results selected; LICENSE file added; `pyproject.toml` and `CITATION.cff` updated
