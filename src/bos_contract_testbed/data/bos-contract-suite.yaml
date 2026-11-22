@@ -1,0 +1,162 @@
+# B1 (#41): the contract test suite for the paper's Table 5 (bde-paper tab:contract-spec), one definition.
+# Every condition of every cell maps to test ids, a Gap, or both (partial). Checked by scripts/contract_suite.py.
+# status: covered | partial | gap | conflict (a test exists but asserts the opposite of the paper's condition).
+schema_version: 1
+id: bos-contract-suite-v0
+paper: {repo: private/bde-paper, sha: 690ab81f1e2db82264ea91448ced235be82f979c, file: paper/sections/03-contract-model.tex, table: tab:contract-spec}
+ri_sha: 8c871466fff695761fcbedf52f1dcdb830f455db
+
+# Where test ids live, and what evidence of execution the Testbed holds for each.
+sources:
+  tb-verify:
+    kind: testbed-check
+    runner: scripts/verify_ri_provisioning.py --control-path
+    evidence: [artifacts/px4-a-run2-20261108/results.json, artifacts/px4-b-run1-20261108/results.json]
+    ri_sha: 8c871466fff695761fcbedf52f1dcdb830f455db
+  tb-ricontract:
+    kind: testbed-check
+    runner: scripts/verify_ri_telemetry_contract.py
+    evidence: [artifacts/px4-ri-build-8c87146-20261108/results.json]
+    ri_sha: 8c871466fff695761fcbedf52f1dcdb830f455db
+  tb-e2e02:
+    kind: testbed-check
+    layer: southbound (Nexus and the BACnet device; not the RI API)
+    runner: scripts/verify_e2e02_sim_nexus.py
+    evidence: [artifacts/e2e02-sim-nexus-20261101/results.json]
+  tb-transactions:
+    kind: testbed-score
+    runner: scripts/px3_lab/transactions.py
+    evidence: [artifacts/px4-a-run2-transactions-20261108/transactions.json, artifacts/px4-b-run1-transactions-20261108/transactions.json]
+  safety:
+    kind: bde-safety-ledger-check
+    note: "BDE Safety Runtime decision checks (finite, deployment, staleness, alarm, control_schema_fresh, hard_limits, slew, envelope)"
+    evidence: [artifacts/px4-a-run2-20261108/control/active-ledger.json]
+  ri-unit:
+    kind: owner-test
+    repo: gutp-bim/gutp-building-os-ri
+    sha: 8c871466fff695761fcbedf52f1dcdb830f455db
+    source: artifacts/px4-ri-build-8c87146-20261108/ri-source/DotNet
+    executed_by_testbed: false
+  tp:
+    kind: owner-test
+    repo: private/tenant-portal
+    sha: 45c82971c7dd157f286e065f5662a4ea0ed9e697
+    executed_by_testbed: false
+    note: "authz-matrix.test.ts has 68 cases at 45c8297 (26 it() + 42 from the §2.1 table; counted 2026-11-08). The record of 68/68 is against BOS abf7aef / 61d7ca6, not RI 8c87146. The paper's '越境・権限昇格 10件' could not be reconciled with this file."
+
+operations:
+  telemetry_read:
+    label: 計測値の取得
+    conditions:
+      - {id: pre-read-permission, cell: Pre, text: 読取権限がある, status: covered,
+         tests: [tb-verify:ri_api_reachable_and_anonymous_read_denied, tb-verify:point_detail_read_with_reader_token, "tp:authz-matrix §2.1 (42 cases)"]}
+      - {id: pre-id-space, cell: Pre, text: Pointの識別子が契約の識別子空間に属する, status: covered,
+         tests: [tb-ricontract:unknown_point_rejected, tb-ricontract:wrong_gateway_identity_rejected, tb-verify:product_oxigraph_cache_unknown_point_rejected,
+                 "ri-unit:BuildingOS.Shared.Test/Infrastructure/ConnectorWorker/GatewayIngressServiceTest.cs::StreamTelemetry_UnknownPoint_Skipped",
+                 "ri-unit:BuildingOS.Shared.Test/Infrastructure/ConnectorWorker/GatewayIngressServiceTest.cs::StreamTelemetry_GatewayDoesNotOwnPoint_Skipped"]}
+      - {id: post-unit, cell: Post, text: 値はPoint定義の単位で返る, status: gap,
+         gap: "no test compares the returned value's unit with the Point definition (sbco:unit); units are resolved downstream by BDE (dataset manifest.units, inferred)"}
+      - {id: post-observation-time, cell: Post, text: 時刻は観測時刻として返る, status: covered,
+         tests: [tb-ricontract:validated_utc_and_values_preserved, tb-ricontract:history_utc_and_values_preserved, tb-verify:real_core_acquisition_utc_and_numeric_values,
+                 "ri-unit:BuildingOS.Shared.Test/Infrastructure/RunContextVerifierTest.cs::ValidContextRequiresTrustedGatewayAndPreservesAcquisitionTimestamp"]}
+      - {id: fail-missing-not-filled, cell: Fail, text: 値が無いときは欠測として区別し、0や前回値で埋めない, status: conflict,
+         tests: ["ri-unit:BuildingOS.Shared.Test/Infrastructure/ConnectorWorker/GatewayIngressServiceTest.cs::StreamTelemetry_NoValueCase_DefaultsToNumericZero"],
+         gap: "the RI ingress takes a frame with no value as numeric 0.0 (legacy-gateway wire back-compat) and its test asserts that: the opposite of the paper's Fail"}
+      - {id: t-unit-injection, cell: T, text: 単位の異なる値を注入し、検出する, status: gap, gap: "no injection test"}
+      - {id: t-id-spelling-injection, cell: T, text: 識別子の異なる綴りを注入し、検出する, status: partial,
+         tests: [tb-ricontract:unknown_point_rejected],
+         gap: "only an unknown id is injected; another spelling of a registered id (case, URI vs local name, URL encoding) is not"}
+  time:
+    label: 時刻
+    conditions:
+      - {id: pre-clock-reference, cell: Pre, text: 計測値が時計の出所を参照する, status: covered,
+         tests: [tb-verify:real_ri_one_clock, tb-verify:real_core_clock_metadata_reaches_ri,
+                 "ri-unit:BuildingOS.IntegrationTest/Tests/ClockProvisioningTest.cs::FixtureImportsIdempotently_AndMatchesProvisioningContract"]}
+      - {id: post-origin-and-quality, cell: Post, text: 時計の出所（機器・受信・シミュレーション）と品質を識別できる, status: covered,
+         tests: [tb-ricontract:validated_envelope_preserves_clock_metadata, tb-ricontract:hot_store_preserves_clock_metadata, tb-ricontract:history_query_dto_preserves_clock_metadata,
+                 tb-verify:real_core_hot_clock_metadata, tb-verify:real_core_s3_history_clock_metadata]}
+      - {id: post-sim-run-binding, cell: Post, text: シミュレーション時刻は実行IDと世代に結び付く, status: covered,
+         tests: [tb-verify:run_context_verified_one_run_id, tb-verify:run_context_verified_latest_is_generation_2, tb-verify:run_context_verified_history_has_generations_1_and_2,
+                 tb-verify:run_context_replay_iii_tampered_run_id_rejected, tb-verify:run_context_replay_iv_unknown_generation_3_rejected]}
+      - {id: fail-quality-refusable, cell: Fail, text: 出所不明や巻戻りは品質で示し、アプリケーションが使用を拒否できる, status: partial,
+         tests: [tb-verify:run_context_replay_unconfigured_rejected, "tb-verify:boptest_sim_time_monotonic_across_polls|plant_sim_time_monotonic_across_polls"],
+         gap: "a rewind is only observed (monotonic in the run), never injected; BDE dropping sim_time_quality=changed rows is recorded (run_bde_pipeline time_axis_counts) but not a check"}
+      - {id: t-missing-clock-injection, cell: T, text: 時計メタデータの欠落を注入し、検出する, status: gap, gap: "run-context fields are tampered (iii/iv/vi/vii), but no frame with clock metadata removed is injected"}
+      - {id: t-rewind-injection, cell: T, text: 時計メタデータの巻戻りを注入し、検出する, status: gap, gap: "no injection test"}
+  control_write:
+    label: 書込（Control）
+    conditions:
+      - {id: pre-write-permission, cell: Pre, text: 書込権限がある, status: covered,
+         tests: [tb-verify:control_without_token_401, tb-verify:control_with_read_only_token_403, tb-verify:writer_token_refused_with_wrong_secret,
+                 "ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_Returns403_WhenPointIsNotWritable"]}
+      - {id: pre-control-schema, cell: Pre, text: 値がControlSchema（型・列挙値・範囲）を満たす, status: covered,
+         tests: ["ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_Returns400_WhenValueViolatesSchema",
+                 "ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_Returns400_WhenEnumValueNotAllowed",
+                 "ri-unit:BuildingOS.Shared.Test/Domain/ControlValueValidatorTest.cs::Number_Rejects_OutOfRange",
+                 tb-verify:control_live_schema_equals_approved, safety:hard_limits]}
+      - {id: post-accepted-vs-applied, cell: Post, text: 「受け付けた」と「設備に適用した」を区別する, status: partial,
+         tests: ["ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_Returns202_WithControlId_WhenPointIsWritable", tb-transactions:match_rate],
+         gap: "202 and the later readback are checked separately; no check asserts that the API never reports 'applied' for an accepted-only command"}
+      - {id: post-readback, cell: Post, text: 適用値を読み戻せる, status: covered, tests: [tb-transactions:match_rate, tb-verify:release_ri_readback_observed]}
+      - {id: post-actor-result-recorded, cell: Post, text: 実行者と結果が記録される, status: covered,
+         tests: [tb-verify:control_audit_row_per_accepted_write, tb-verify:control_audit_success_by_safety_writer,
+                 "ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_AuditRow_NamesTheAuthenticatedPrincipal",
+                 "ri-unit:BuildingOS.IntegrationTest/Tests/PointControlAuditRoundTripTest.cs::ControlResult_IsPersisted_AndVisibleInTheAuditHistory"]}
+      - {id: fail-out-of-range-refused, cell: Fail, text: 範囲外の値は拒否し、黙って丸めない, status: covered,
+         tests: ["ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_Returns400_WhenValueViolatesSchema", tb-e2e02:5_out_of_range_refused, safety:hard_limits],
+         note: "Safety 'projected' (slew) changes a value by an approved profile and records it; that is not silent rounding"}
+      - {id: fail-unverifiable-refused, cell: Fail, text: 検証できないときは拒否する, status: conflict,
+         tests: ["ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_Returns400_WhenSchemaUnusable_AndPolicyIsDeny",
+                 "ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_Accepts_WhenNoSchema_Permissive",
+                 "ri-unit:BuildingOS.Shared.Test/Domain/ControlValueValidatorTest.cs::ControlSchemaFailurePolicy_UnknownValue_FallsBackToAllow_AndSaysSo"],
+         gap: "refusal holds only with CONTROL_SCHEMA_FAILURE_POLICY=deny; the RI default is allow and its tests assert that (the paper states the default and marks 'reject by default' as P)"}
+      - {id: t-out-of-range, cell: T, text: 範囲外の値を注入し、拒否を確かめる, status: covered,
+         tests: ["ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_Returns400_WhenValueViolatesSchema", tb-e2e02:5_out_of_range_refused]}
+      - {id: t-unauthorized, cell: T, text: 権限のない要求を注入し、拒否を確かめる, status: covered,
+         tests: [tb-verify:control_with_read_only_token_403, tb-verify:control_without_token_401]}
+      - {id: t-schema-missing, cell: T, text: スキーマの欠落を注入し、拒否を確かめる, status: partial,
+         tests: ["ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_Returns400_WhenSchemaUnusable_AndPolicyIsDeny"],
+         gap: "only under the non-default deny policy and only as an owner unit test; the Testbed never injects it"}
+      - {id: t-accepted-vs-readback-diff, cell: T, text: 受付値と読戻し値の差を検出する, status: covered, tests: [tb-transactions:match_rate]}
+  release:
+    label: 解除（release）
+    conditions:
+      - {id: pre-release-point, cell: Pre, text: 対象Pointに解除Pointが定義されている, status: covered,
+         tests: [tb-verify:real_ri_release_points_target_writable_equipment, tb-verify:release_point_enum_control_schema_present,
+                 "ri-unit:BuildingOS.IntegrationTest/Tests/ReleasePointTest.cs::Replace_InvalidRelease_IsRejectedByPreview"]}
+      - {id: post-default-readback, cell: Post, text: 設備は既定の制御に戻り、読戻しで確認できる, status: covered,
+         tests: [tb-verify:release_priority_array_all_null, tb-verify:release_present_value_is_relinquish_default, tb-verify:release_ri_readback_observed, tb-e2e02:4_release_p8_then_p16]}
+      - {id: fail-release-failure-reported, cell: Fail, text: 解除できないときは失敗を返し、最後の値が残っていることを知らせる, status: gap,
+         gap: "no test makes a release fail (gateway offline, device refusal) and checks the reply and the remaining value"}
+      - {id: t-release-readback, cell: T, text: 書込の後に解除し、読戻しで既定値を確かめる, status: covered,
+         tests: [tb-verify:release_slot_8_held_the_last_active_value, tb-verify:release_present_value_is_relinquish_default]}
+      - {id: t-invalid-release-value, cell: T, text: 無効な値（0）の拒否を確かめる, status: covered,
+         tests: ["ri-unit:BuildingOS.ApiServer.Test/PointControllerTest.cs::Control_ReleasePoint_RejectsAnythingButOne",
+                 "ri-unit:BuildingOS.Shared.Test/Domain/ControlValueValidatorTest.cs::ReleaseOnlyEnum_AcceptsOnlyOne"]}
+  authorized_query:
+    label: 認可付きの照会
+    conditions:
+      - {id: pre-credential, cell: Pre, text: 利用者を識別できる証明がある, status: covered,
+         tests: ["tp:authz-matrix §2.6 (3 cases, real BOS only)", tb-verify:ri_api_reachable_and_anonymous_read_denied, tb-verify:control_without_token_401]}
+      - {id: post-same-id-space, cell: Post, text: 判定と照会が同じ識別子空間で行われ、結果が一致する, status: covered,
+         tests: ["tp:authz-matrix §2.1 (42 cases)", "tp:authz-matrix §2.4 accessible?resourceType=building mirrors MyResources"]}
+      - {id: fail-undecidable-refused, cell: Fail, text: 判定できないときは拒否する, status: partial,
+         tests: ["tp:authz-matrix §2.1 u-sysadmin / u-noperm = 403"],
+         gap: "a user with no grant is refused, but no test makes the decision unavailable (BOS timeout or 5xx) and checks refusal"}
+      - {id: fail-no-partial-in-success, cell: Fail, text: 部分的な失敗を成功の応答に混ぜない, status: partial,
+         tests: ["tp:authz-matrix §2.2 (batch-latest drops forbidden points)"],
+         gap: "batch-latest drops forbidden points with no partial mark; no test asserts that such a reply is marked partial"}
+      - {id: t-notation-invariance, cell: T, text: 識別子の種類や権限の表記を変えても判定が同じ, status: partial,
+         tests: ["tp:authz-matrix §2.4 returns hashed ids", "tp:authz-matrix §2.4b idFormat=original"],
+         gap: "identifier kinds are covered; another notation of the same permission is not"}
+      - {id: t-cross-boundary, cell: T, text: 越境を拒否する, status: covered,
+         tests: ["tp:authz-matrix §2.1 cross-building / cross-tenant 403", "tp:authz-matrix §2.3", "tp:authz-matrix §2.5"]}
+
+# The comparison condition for B3 (#43): what a structure-only check sees.
+structure_only:
+  definition: >-
+    Each reply is checked only against the RI OpenAPI schema of RI 8c87146 (status code class, required fields, JSON types)
+    and the telemetry envelope's required fields (device_id, point_id, value, datetime). No value, unit, time, state-after
+    (readback, priority array), audit or cross-request comparison is made.
+  counts_as_detected: "a reply that fails the schema, or a non-2xx status where 2xx was expected"
+  note: "B2 (#42) preregisters the injections and the metrics; B3 (#43) runs both conditions"
